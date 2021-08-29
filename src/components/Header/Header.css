@@ -5,8 +5,15 @@
 
 .header__container {
   display: flex;
+}
+
+.header__container_type_row {
   flex-direction: row;
   justify-content: space-between;
+}
+
+.header__container_type_column {
+  flex-direction: column;
 }
 
 .header__logo {
@@ -29,6 +36,7 @@
 
 .header__item {
   align-self: center;
+  cursor: pointer;
 }
 
 .header__item_type_link {
@@ -43,7 +51,7 @@
 }
 
 .header__title {
-  margin: 50px 0 0 0;
+  margin: 50px 0 102px 0;
   font-weight: 400;
   font-size: 40px;
   line-height: 52px;
@@ -53,8 +61,11 @@
 .header__lines {
   width: 722px;
   height: 244px;
+  margin-bottom: 60px;
+  align-self: flex-end;
 }
 
 .header__line {
   opacity: 0.7;
+  color: #1d1d1d;
 }
