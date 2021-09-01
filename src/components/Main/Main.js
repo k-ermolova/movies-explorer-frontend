@@ -1,9 +1,13 @@
 import Promo from "../Promo/Promo";
+import AboutProject from "../AboutProject/AboutProject";
 import './Main.css';
 
 function Main() {
-  return(
-  <Promo />
+  return (
+    <main className='content'>
+      <Promo/>
+      <AboutProject/>
+    </main>
   );
 }
 

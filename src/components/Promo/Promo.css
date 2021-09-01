@@ -1,8 +1,11 @@
+.content__promo {
+  padding: 0 70px;
+}
+
 .promo {
   display: flex;
   flex-direction: column;
   background-color: #dddee3;
-  padding: 0 70px 0 70px;
 }
 
 .promo__title {

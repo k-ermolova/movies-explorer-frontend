@@ -1,8 +1,8 @@
 import './Promo.css';
 
 function Promo() {
-  return(
-    <section className="promo">
+  return (
+    <section className="promo content__promo">
       <h1 className="promo__title">Учебный проект студента факультета Веб-разработки.</h1>
       <svg className="promo__lines">
         <path className="promo__line" fillRule="evenodd" clipRule="evenodd"

@@ -1,6 +1,9 @@
+.page__header {
+  padding: 0 70px;
+}
+
 .header {
   background-color: #dddee3;
-  padding: 0 70px 0 70px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
