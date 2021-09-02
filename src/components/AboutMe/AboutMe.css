@@ -1,0 +1,52 @@
+.content__student {
+  padding: 110px 70px 100px 70px;
+}
+
+.student {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.student__name {
+  margin: 66px 0 18px 0;
+  font-size: 50px;
+  font-weight: 400;
+}
+
+.student__intro {
+  margin: 0 0 26px 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.student__description {
+  margin: 0 0 99px 0;
+  max-width: 600px;
+  min-height: 88px;
+  font-size: 14px;
+}
+
+.student__image {
+  width: 270px;
+  height: 327px;
+  background:  center /cover url('../../images/student.JPG');
+  border-radius: 10px;
+  position: absolute;
+  top: 227px;
+  right: 70px;
+}
+
+.student__media {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.student__link {
+  margin-right: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
