@@ -21,9 +21,5 @@
   height: 244px;
   margin-bottom: 60px;
   align-self: flex-end;
-}
-
-.promo__line {
-  opacity: 0.7;
-  color: #1d1d1d;
+  background-image: url('../../images/lines.svg');
 }
