@@ -1,0 +1,35 @@
+.content__portfolio {
+  padding: 0 70px 125px 70px;
+}
+
+.portfolio {
+
+}
+
+.portfolio__title {
+  margin: 0 0 50px 0;
+  font-size: 18px;
+  font-weight: 400;
+  color: #a0a0a0;
+}
+
+.portfolio__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.portfolio__item {
+  padding: 0 0 19px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: 30px;
+  line-height: 50px;
+  background: no-repeat right url('../../images/arrow.svg');
+}
+
+.portfolio__item:last-child {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: none;
+}
