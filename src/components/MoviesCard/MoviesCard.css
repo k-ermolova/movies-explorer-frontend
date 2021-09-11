@@ -1,3 +1,41 @@
 .card {
-  width: 319px;
+  background-color: #fff;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+
+}
+
+.card__heading {
+  padding: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card__title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.card__duration {
+  margin: 0;
+  font-size: 13px;
+  color: #a0a0a0;
+}
+
+.card__button {
+  padding: 0;
+  margin: 18px auto;
+  display: block;
+  border: none;
+  width: 100px;
+  height: 29px;
+  border-radius: 30px;
+  background-color: #f4f4f4;
+  font-size: 12px;
+}
+
+.card__button_saved {
+  background: no-repeat url('../../images/check.svg') center #ee3465;
 }
