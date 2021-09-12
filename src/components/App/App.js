@@ -2,14 +2,15 @@ import Header from '../Header/Header';
 import './App.css';
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import {Route} from "react-router-dom";
+import {Route, useLocation} from "react-router-dom";
 import Movies from "../Movies/Movies";
 
 
 function App() {
+  const location = useLocation();
   return (
     <div className="App">
-      <Header />
+      {location.pathname === '/movies' ? <Header pathname='movies'/> : <Header />}
       <Route path='/movies'>
         <Movies/>
       </Route>
