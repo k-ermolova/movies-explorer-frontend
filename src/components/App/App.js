@@ -2,22 +2,29 @@ import Header from '../Header/Header';
 import './App.css';
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import {Route, useLocation} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import Movies from "../Movies/Movies";
+import PageNotFound from "../PageNotFound/PageNotFound";
 
 
 function App() {
-  const location = useLocation();
   return (
     <div className="App">
-      {location.pathname === '/movies' ? <Header pathname='movies'/> : <Header />}
-      <Route path='/movies'>
-        <Movies/>
-      </Route>
-      <Route exact path='/'>
-        <Main />
-      </Route>
-      <Footer />
+      <Switch>
+        <Route exact path='/'>
+          <Header/>
+          <Main/>
+          <Footer/>
+        </Route>
+        <Route path='/movies'>
+          <Header pathname='movies'/>
+          <Movies/>
+          <Footer/>
+        </Route>
+        <Route path='*'>
+          <PageNotFound/>
+        </Route>
+      </Switch>
     </div>
   );
 }
