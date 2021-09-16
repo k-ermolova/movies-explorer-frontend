@@ -1,9 +1,10 @@
 import './Header.css';
+import Logo from "../Logo/Logo";
 
 function Header(props) {
   return (props.pathname === 'movies' ? (
         <header className="header header_movies page__header">
-          <div className='header__logo'/>
+          <Logo/>
           <ul className="header__navbar">
             <li className="header__item header__item_type_film">Фильмы</li>
             <li className="header__item header__item_type_saved-film">Сохранённые фильмы</li>
@@ -14,7 +15,7 @@ function Header(props) {
           </div>
         </header>)
       : <header className="header page__header">
-        <div className='header__logo'/>
+        <Logo/>
         <ul className="header__navbar">
           <li className="header__item header__item_type_link">Регистрация</li>
           <li className="header__item header__item_type_button">Войти</li>
