@@ -72,3 +72,46 @@
 .input-text_type_login:last-child {
   margin-bottom: 179px;
 }
+
+@media screen and (max-width: 769px){
+  .page__auth {
+    margin-top: 214px;
+    margin-bottom: 232px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .page__auth {
+    margin-top: 38px;
+    margin-bottom: 30px;
+  }
+  .auth {
+    align-items: center;
+  }
+  .auth__title {
+    margin-top: 32px;
+    margin-bottom: 80px;
+  }
+  .form {
+    max-width: 260px;
+    margin: auto;
+
+  }
+  .input-text:last-child {
+    margin-bottom: 157px;
+  }
+
+  .input-text_type_login:last-child {
+    margin-bottom: 267px;
+  }
+
+  .form__button {
+    width: 260px;
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+
+  .form__question {
+    font-size: 12px;
+  }
+}
