@@ -23,3 +23,17 @@
   align-self: flex-end;
   background-image: url('../../images/lines.svg');
 }
+
+@media screen and (max-width: 769px) {
+  .content__promo {
+    padding: 0 44px;
+  }
+  .promo__title {
+    margin: 300px 0 140px;
+    text-align: center;
+  }
+  .promo__lines {
+    width: 670px;
+    margin-bottom: 70px;
+  }
+}
