@@ -26,7 +26,6 @@ function AboutProject() {
           <p className='about__item about__item_frontend'>4 недели</p>
           <p className='about__sign'>Front-end</p>
         </div>
-
       </div>
     </section>
   );

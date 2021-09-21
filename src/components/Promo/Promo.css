@@ -21,12 +21,15 @@
   height: 244px;
   margin-bottom: 60px;
   align-self: flex-end;
-  background-image: url('../../images/lines.svg');
+  background: center/ contain no-repeat url('../../images/lines.svg');
 }
 
 @media screen and (max-width: 769px) {
   .content__promo {
     padding: 0 44px;
+  }
+  .promo {
+    align-items: center;
   }
   .promo__title {
     margin: 300px 0 140px;
@@ -35,5 +38,6 @@
   .promo__lines {
     width: 670px;
     margin-bottom: 70px;
+    align-self: center;
   }
 }

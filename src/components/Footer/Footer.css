@@ -39,3 +39,13 @@
 .footer__link:last-child {
   margin-right: 0;
 }
+
+@media screen and (max-width: 769px) {
+  .page__footer {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+  .footer__info {
+    font-size: 13px;
+  }
+}

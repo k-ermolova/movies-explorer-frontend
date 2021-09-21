@@ -11,7 +11,8 @@
   padding: 70px 0 110px 0;
   margin: 0;
   display: grid;
-  grid-template-columns: 570px 570px;
+  grid-template-columns: 50% 50%;
+  /*gap: 40px;*/
   list-style: none;
 }
 
@@ -29,8 +30,8 @@
 }
 
 .about__duration {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 20% 80%;
 }
 
 .about__item {
@@ -41,13 +42,11 @@
 }
 
 .about__item_backend {
-  width: 228px;
   background-color: #3456F3;
   color: #fff;
 }
 
 .about__item_frontend {
-  width: 912px;
   background-color: #f2f2f2;
 }
 
@@ -57,4 +56,21 @@
   font-size: 14px;
   font-weight: 500;
   text-align: center;
+}
+
+@media screen and (max-width: 769px) {
+  .content__about {
+    padding: 90px 50px;
+  }
+  .about__container {
+    padding-bottom: 93px;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  .about__title {
+    margin-bottom: 22px;
+  }
+  .about__paragraph {
+    font-size: 12px;
+  }
 }

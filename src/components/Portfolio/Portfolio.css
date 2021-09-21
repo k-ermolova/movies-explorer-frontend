@@ -33,3 +33,12 @@
   margin-bottom: 0;
   border-bottom: none;
 }
+
+@media screen and (max-width: 769px) {
+  .content__portfolio {
+    padding: 0 50px 90px;
+  }
+  .portfolio__item {
+    font-size: 28px;
+  }
+}

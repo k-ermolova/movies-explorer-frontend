@@ -5,7 +5,12 @@
 .student {
   display: flex;
   flex-direction: column;
-  position: relative;
+}
+
+.student__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .student__name {
@@ -30,11 +35,9 @@
 .student__image {
   width: 270px;
   height: 327px;
+  align-self: flex-end;
   background:  center /cover url('../../images/student.JPG');
   border-radius: 10px;
-  position: absolute;
-  top: 227px;
-  right: 70px;
 }
 
 .student__media {
@@ -49,4 +52,33 @@
   margin-right: 20px;
   font-size: 14px;
   font-weight: 500;
+}
+
+@media screen and (max-width: 1025px) {
+  .student__description {
+    max-width: 440px;
+  }
+}
+
+@media screen and (max-width: 769px){
+  .content__student {
+    padding: 90px 50px;
+  }
+  .student__name {
+    margin-bottom: 16px;
+    font-size: 40px;
+  }
+  .student__intro {
+    margin-bottom: 20px;
+    font-size: 12px;
+  }
+  .student__description {
+    max-width: 364px;
+    margin-bottom: 87px;
+    font-size: 12px;
+  }
+  .student__image {
+    width: 255px;
+    height: 307px;
+  }
 }
