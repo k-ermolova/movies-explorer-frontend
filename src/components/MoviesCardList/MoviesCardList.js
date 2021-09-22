@@ -14,24 +14,29 @@ import image_10 from '../../images/10.png';
 import image_11 from '../../images/11.png';
 import image_12 from '../../images/12.png';
 
-function MoviesCardList() {
+function MoviesCardList(props) {
   return (
     <section className='cards movies__cards'>
-      <ul className='cards-list'>
-        <MoviesCard image={image_1} saved={true}/>
-        <MoviesCard image={image_2} saved={true}/>
-        <MoviesCard image={image_3}/>
-        <MoviesCard image={image_4}/>
-        <MoviesCard image={image_5}/>
-        <MoviesCard image={image_6} saved={true}/>
-        <MoviesCard image={image_7} saved={true}/>
-        <MoviesCard image={image_8}/>
-        <MoviesCard image={image_9}/>
-        <MoviesCard image={image_10}/>
-        <MoviesCard image={image_11} saved={true}/>
-        <MoviesCard image={image_12}/>
+      {props.type === 'saved' ? <ul className='cards-list'>
+        <MoviesCard image={image_1} button='remove'/>
+        <MoviesCard image={image_2} button='remove'/>
+        <MoviesCard image={image_3} button='remove'/>
       </ul>
-      <ShowMore/>
+      : <><ul className='cards-list'>
+          <MoviesCard image={image_1} saved={true}/>
+          <MoviesCard image={image_2} saved={true}/>
+          <MoviesCard image={image_3}/>
+          <MoviesCard image={image_4}/>
+          <MoviesCard image={image_5}/>
+          <MoviesCard image={image_6} saved={true}/>
+          <MoviesCard image={image_7} saved={true}/>
+          <MoviesCard image={image_8}/>
+          <MoviesCard image={image_9}/>
+          <MoviesCard image={image_10}/>
+          <MoviesCard image={image_11} saved={true}/>
+          <MoviesCard image={image_12}/>
+        </ul>
+        <ShowMore/></>}
     </section>
   );
 }

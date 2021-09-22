@@ -7,6 +7,7 @@ import Movies from "../Movies/Movies";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
+import SavedMovies from "../SavedMovies/SavedMovies";
 
 
 function App() {
@@ -21,6 +22,11 @@ function App() {
         <Route path='/movies'>
           <Header pathname='movies'/>
           <Movies/>
+          <Footer/>
+        </Route>
+        <Route path='/saved-movies'>
+          <Header pathname='movies'/>
+          <SavedMovies/>
           <Footer/>
         </Route>
         <Route path='/signup'>
