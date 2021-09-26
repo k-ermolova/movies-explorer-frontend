@@ -17,7 +17,7 @@ function Header(props) {
       : <header className="header page__header">
         <Logo/>
         <ul className="header__navbar">
-          <li className="header__item header__item_type_link">Регистрация</li>
+          <li className="header__item">Регистрация</li>
           <li className="header__item header__item_type_button">Войти</li>
         </ul>
       </header>

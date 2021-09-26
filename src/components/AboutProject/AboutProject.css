@@ -12,7 +12,6 @@
   margin: 0;
   display: grid;
   grid-template-columns: 50% 50%;
-  /*gap: 40px;*/
   list-style: none;
 }
 
@@ -36,9 +35,9 @@
 
 .about__item {
   margin: 0;
+  padding: 9px 0;
   font-size: 14px;
   text-align: center;
-  line-height: 36px;
 }
 
 .about__item_backend {
@@ -72,5 +71,39 @@
   }
   .about__paragraph {
     font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 551px) {
+  .content__about {
+    padding: 70px 18px;
+  }
+  .about__container {
+    padding: 60px 0 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .about__title {
+    margin-bottom: 16px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+  .about__paragraph {
+    font-size: 11px;
+    line-height: 16px;
+    margin-bottom: 56px;
+  }
+  .about__duration {
+    grid-template-columns: 35% 65%;
+  }
+  .about__item {
+    font-size: 11px;
+    padding: 11px 0;
+
+  }
+  .about__sign {
+    margin-top: 10px;
+    font-size: 11px;
   }
 }

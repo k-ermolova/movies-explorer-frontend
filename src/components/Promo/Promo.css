@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   background-color: #dddee3;
+  overflow: hidden;
 }
 
 .promo__title {
@@ -36,8 +37,26 @@
     text-align: center;
   }
   .promo__lines {
-    width: 670px;
+    width: 100%;
     margin-bottom: 70px;
     align-self: center;
+    height: 230px;
+  }
+}
+
+
+@media screen and (max-width: 551px) {
+  .content__promo {
+    padding: 0 10px;
+  }
+  .promo__title {
+    font-size: 29px;
+    line-height: 39px;
+    margin: 183px 0 60px;
+    align-self: center;
+  }
+  .promo__lines {
+    width: 722px;
+    margin-bottom: 70px;
   }
 }

@@ -1,5 +1,5 @@
 .content__portfolio {
-  padding: 0 70px 125px 70px;
+  padding: 0 70px 106px 70px;
 }
 
 .portfolio {
@@ -20,25 +20,39 @@
 }
 
 .portfolio__item {
-  padding: 0 0 19px 0;
+  padding-bottom: 19px;
   margin-bottom: 20px;
   border-bottom: 1px solid #e8e8e8;
   font-size: 30px;
   line-height: 50px;
-  background: no-repeat right url('../../images/arrow.svg');
+  background: no-repeat 100% 25% url('../../images/arrow.svg');
 }
 
 .portfolio__item:last-child {
-  padding-bottom: 0;
   margin-bottom: 0;
   border-bottom: none;
 }
 
 @media screen and (max-width: 769px) {
   .content__portfolio {
-    padding: 0 50px 90px;
+    padding: 0 50px 71px;
   }
   .portfolio__item {
     font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 551px) {
+  .content__portfolio {
+    padding: 0 14px 51px;
+  }
+  .portfolio__title {
+    margin-bottom: 40px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .portfolio__item {
+    font-size: 18px;
+    line-height: 28px;
   }
 }
