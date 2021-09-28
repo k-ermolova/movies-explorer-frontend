@@ -75,9 +75,26 @@
   border-radius: 50px;
 }
 
+.header__menu {
+  display: none;
+  width: 44px;
+  height: 44px;
+  background: no-repeat center url('../../images/menu.svg');
+  align-self: center;
+}
+
 @media screen and (max-width: 769px) {
   .page__header {
     padding: 0 30px;
+  }
+  .header__navbar {
+    display: none;
+  }
+  .header__profile-container {
+    display: none;
+  }
+  .header__menu {
+    display: block;
   }
 }
 
@@ -91,5 +108,9 @@
   .header__item:first-child {
     margin-right: 14px;
     font-weight: 500;
+  }
+  .header__menu {
+    width: 40px;
+    height: 43px;
   }
 }

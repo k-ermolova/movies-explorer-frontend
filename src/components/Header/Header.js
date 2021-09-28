@@ -13,6 +13,7 @@ function Header(props) {
             <a className='header__profile'>Аккаунт</a>
             <div className='header__profile-icon'/>
           </div>
+          <div className='header__menu'/>
         </header>)
       : <header className="header page__header">
         <Logo/>

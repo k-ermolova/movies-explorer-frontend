@@ -2,7 +2,7 @@
   background-color: #fff;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
   border-radius: 6px;
-
+  max-width: 360px;
 }
 
 .card__heading {
@@ -15,7 +15,16 @@
 .card__title {
   margin: 0;
   font-size: 15px;
+  line-height: 18px;
   font-weight: 500;
+}
+
+.card__image {
+  max-width: 360px;
+  min-height: 200px;
+  max-height: 200px;
+  vertical-align: bottom;
+
 }
 
 .card__duration {
@@ -43,4 +52,20 @@
 
 .card__button_remove {
   background: no-repeat url('../../images/remove.svg') center #f4f4f4;
+}
+
+@media screen and (max-width: 769px) {
+  .card__image {
+    width: 342px;
+    min-height: 190px;
+    max-height: 190px;
+  }
+}
+
+@media screen and (max-width: 551px) {
+  .card__image {
+    width: 300px;
+    min-height: 168px;
+    max-height: 168px;
+  }
 }
