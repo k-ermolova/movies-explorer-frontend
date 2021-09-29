@@ -5,7 +5,7 @@ function Header(props) {
   return (props.pathname === 'movies' ? (
         <header className="header header_movies page__header">
           <Logo/>
-          <ul className="header__navbar">
+          <ul className="header__navbar header__navbar_movies">
             <li className="header__item header__item_type_film">Фильмы</li>
             <li className="header__item header__item_type_saved-film">Сохранённые фильмы</li>
           </ul>

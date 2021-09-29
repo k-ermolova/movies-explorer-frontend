@@ -87,7 +87,7 @@
   .page__header {
     padding: 0 30px;
   }
-  .header__navbar {
+  .header__navbar_movies {
     display: none;
   }
   .header__profile-container {
