@@ -27,7 +27,7 @@
   grid-area: year;
 }
 
-.footer__links {
+.footer__items {
   margin: 0;
   padding: 0;
   display: flex;
@@ -36,12 +36,17 @@
   grid-area: links;
 }
 
-.footer__link {
+.footer__item {
   margin-right: 20px;
 }
 
-.footer__link:last-child {
+.footer__item:last-child {
   margin-right: 0;
+}
+
+.footer__link {
+  text-decoration: none;
+  color: inherit;
 }
 
 @media screen and (max-width: 769px) {
@@ -73,10 +78,10 @@
   'links'
   'year';
   }
-  .footer__links {
+  .footer__items {
     flex-direction: column;
   }
-  .footer__link {
+  .footer__item {
     margin-right: 0;
     margin-bottom: 12px;
     font-size: 12px;
