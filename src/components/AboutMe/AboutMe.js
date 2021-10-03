@@ -14,10 +14,10 @@ function AboutMe() {
             на факультете физико-математических и естественных наук РУДН. Люблю фотографировать, а ещё увлекаюсь бегом.
             Недавно начала кодить. </p>
           <ul className='student__media'>
-            <li className><Link className='student__link'
+            <li><Link className='student__link'
                                 to={{pathname: 'https://www.facebook.com/ksenia.ermolova.75/'}}
                                 target='_blank'>Facebook</Link></li>
-            <li className><Link className='student__link' to={{pathname: 'https://github.com/k-ermolova'}}
+            <li><Link className='student__link' to={{pathname: 'https://github.com/k-ermolova'}}
                                 target='_blank'>Github</Link></li>
           </ul>
         </div>
