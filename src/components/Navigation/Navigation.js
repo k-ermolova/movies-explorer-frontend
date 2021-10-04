@@ -1,12 +1,12 @@
 import './Navigation.css';
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 
 function Navigation(props) {
-  return (props.pathname === 'movies' ?
+  return (props.desktopMenu ?
       (<nav className='navbar'>
-      <ul className='navbar__container navbar__container_movies'>
-        <li className='navbar__item navbar__item_type_film'><Link className='navbar__link' to='/movies'>Фильмы</Link></li>
-        <li className='navbar__item navbar__item_type_saved-film'><Link className='navbar__link' to='/saved-movies'>Сохранённые фильмы</Link></li>
+      <ul className={`navbar__container navbar__container_authorized`}>
+        <li className='navbar__item'><NavLink className='navbar__link' activeClassName='navbar__link_active' to='/movies'>Фильмы</NavLink></li>
+        <li className='navbar__item'><NavLink className='navbar__link' activeClassName='navbar__link_active' to='/saved-movies'>Сохранённые фильмы</NavLink></li>
       </ul>
     </nav>)
       : <nav className='navbar'>

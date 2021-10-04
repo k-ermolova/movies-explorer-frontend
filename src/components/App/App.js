@@ -9,9 +9,20 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
+import {useState} from "react";
 
 
 function App() {
+  const [isMenuOpened, setIsMenuOpened] = useState(false);
+
+  const handleOpening = () => {
+    setIsMenuOpened(true);
+  }
+
+  const handleClosing = () => {
+    setIsMenuOpened(false);
+  }
+
   return (
     <div className="App">
       <Switch>
@@ -21,17 +32,17 @@ function App() {
           <Footer/>
         </Route>
         <Route path='/movies'>
-          <Header pathname='movies'/>
+          <Header desktopMenu={true} onMenu={handleOpening} isMenuOpened={isMenuOpened} onClose={handleClosing}/>
           <Movies/>
           <Footer/>
         </Route>
         <Route path='/saved-movies'>
-          <Header pathname='movies'/>
+          <Header desktopMenu={true} onMenu={handleOpening} isMenuOpened={isMenuOpened} onClose={handleClosing}/>
           <SavedMovies/>
           <Footer/>
         </Route>
         <Route path ='/profile'>
-          <Header pathname='movies'/>
+          <Header desktopMenu={true} onMenu={handleOpening} isMenuOpened={isMenuOpened} onClose={handleClosing}/>
           <Profile/>
         </Route>
         <Route path='/signup'>

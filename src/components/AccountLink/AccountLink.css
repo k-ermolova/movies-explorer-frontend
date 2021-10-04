@@ -13,7 +13,6 @@
   border-radius: 40px;
 }
 
-
 .account__title {
   font-size: 12px;
   font-weight: 500;
@@ -31,7 +30,7 @@
 }
 
 @media screen and (max-width: 769px){
-  .account {
+  .account_desktop {
     display: none;
   }
 }

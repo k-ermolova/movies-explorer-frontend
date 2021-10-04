@@ -1,0 +1,40 @@
+.menu {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .3);
+  z-index: 2;
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 300ms;
+}
+
+.menu__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  height: calc(100vh - 90px);
+  width: 340px;
+  padding: 23px 90px 90px;
+}
+
+.menu_opened {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 300ms;
+}
+
+.menu__close-button {
+  padding: 0;
+  height: 22px;
+  width: 22px;
+  background: no-repeat center url('../../images/close.svg');
+  border: none;
+  align-self: end;
+}
