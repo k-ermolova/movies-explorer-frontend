@@ -1,5 +1,6 @@
 .page__header {
   padding: 0 70px;
+  margin-bottom: -1px;
 }
 
 .header {

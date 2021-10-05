@@ -1,5 +1,5 @@
 .content__promo {
-  padding: 0 70px;
+  padding: 0 70px 60px 70px;
 }
 
 .promo {
@@ -20,14 +20,13 @@
 .promo__lines {
   width: 722px;
   height: 244px;
-  margin-bottom: 60px;
   align-self: flex-end;
   background: center/ contain no-repeat url('../../images/lines.svg');
 }
 
 @media screen and (max-width: 769px) {
   .content__promo {
-    padding: 0 44px;
+    padding: 0 44px 70px 44px;
   }
   .promo {
     align-items: center;
@@ -38,7 +37,6 @@
   }
   .promo__lines {
     width: 100%;
-    margin-bottom: 70px;
     align-self: center;
     height: 230px;
   }
@@ -47,7 +45,8 @@
 
 @media screen and (max-width: 551px) {
   .content__promo {
-    padding: 0 10px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   .promo__title {
     font-size: 29px;
@@ -57,6 +56,5 @@
   }
   .promo__lines {
     width: 722px;
-    margin-bottom: 70px;
   }
 }
