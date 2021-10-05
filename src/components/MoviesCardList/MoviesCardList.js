@@ -1,6 +1,5 @@
-import './MoviesCardList.css';
-import MoviesCard from "../MoviesCard/MoviesCard";
-import ShowMore from "../ShowMore/ShowMore";
+import MoviesCard from '../MoviesCard/MoviesCard';
+import ShowMore from '../ShowMore/ShowMore';
 import image_1 from '../../images/1.png';
 import image_2 from '../../images/2.png';
 import image_3 from '../../images/3.png';
@@ -13,6 +12,8 @@ import image_9 from '../../images/9.png';
 import image_10 from '../../images/10.png';
 import image_11 from '../../images/11.png';
 import image_12 from '../../images/12.png';
+
+import './MoviesCardList.css';
 
 function MoviesCardList(props) {
   return (

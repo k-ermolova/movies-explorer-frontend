@@ -1,5 +1,6 @@
+import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
+
 import './SearchForm.css';
-import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
 function SearchForm() {
   return(

@@ -1,16 +1,17 @@
-import Header from '../Header/Header';
-import './App.css';
-import Main from "../Main/Main";
-import Footer from "../Footer/Footer";
-import {Route, Switch} from "react-router-dom";
-import Movies from "../Movies/Movies";
-import PageNotFound from "../PageNotFound/PageNotFound";
-import Register from "../Register/Register";
-import Login from "../Login/Login";
-import SavedMovies from "../SavedMovies/SavedMovies";
-import Profile from "../Profile/Profile";
-import {useState} from "react";
+import {Route, Switch} from 'react-router-dom';
+import {useState} from 'react';
 
+import Header from '../Header/Header';
+import Main from '../Main/Main';
+import Footer from '../Footer/Footer';
+import Movies from '../Movies/Movies';
+import PageNotFound from '../PageNotFound/PageNotFound';
+import Register from '../Register/Register';
+import Login from '../Login/Login';
+import SavedMovies from '../SavedMovies/SavedMovies';
+import Profile from '../Profile/Profile';
+
+import './App.css';
 
 function App() {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
@@ -24,7 +25,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className='App'>
       <Switch>
         <Route exact path='/'>
           <Header/>

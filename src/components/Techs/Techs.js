@@ -1,5 +1,5 @@
 import './Techs.css';
-import Title from "../Title/Title";
+import Title from '../Title/Title';
 
 function Techs() {
   return(

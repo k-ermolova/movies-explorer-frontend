@@ -1,5 +1,6 @@
+import {Link} from 'react-router-dom';
+
 import './AccountLink.css';
-import {Link} from "react-router-dom";
 
 function AccountLink(props) {
   return(

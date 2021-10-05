@@ -1,9 +1,10 @@
-import Title from "../Title/Title";
+import Title from '../Title/Title';
+
 import './AboutProject.css';
 
 function AboutProject() {
   return (
-    <section className="about content__about">
+    <section className='about content__about'>
       <Title title='О проекте'/>
       <ul className='about__container'>
         <li className='about__column'>

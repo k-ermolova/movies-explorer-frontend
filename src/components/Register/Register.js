@@ -1,4 +1,4 @@
-import Form from "../Form/Form";
+import Form from '../Form/Form';
 
 function Register() {
   return (<Form component='register'/>);

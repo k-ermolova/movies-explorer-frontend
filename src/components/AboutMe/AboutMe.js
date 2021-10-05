@@ -1,6 +1,8 @@
-import './AboutMe.css';
-import Title from '../Title/Title';
 import {Link} from 'react-router-dom';
+
+import Title from '../Title/Title';
+
+import './AboutMe.css';
 
 function AboutMe() {
   return (

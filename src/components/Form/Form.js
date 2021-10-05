@@ -1,6 +1,6 @@
 import './Form.css';
-import Logo from "../Logo/Logo";
-import {Link} from "react-router-dom";
+import Logo from '../Logo/Logo';
+import {Link} from 'react-router-dom';
 
 function Form(props) {
   return (props.component === 'register' ?

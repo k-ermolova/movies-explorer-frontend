@@ -1,6 +1,7 @@
+import Navigation from '../Navigation/Navigation';
+import AccountLink from '../AccountLink/AccountLink';
+
 import './Menu.css';
-import Navigation from "../Navigation/Navigation";
-import AccountLink from "../AccountLink/AccountLink";
 
 function Menu(props) {
   return(
