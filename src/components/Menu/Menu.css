@@ -44,7 +44,7 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 551px){
+@media screen and (max-width: 550px){
   .menu__container {
     padding: 0 13px;
     width: 100%;

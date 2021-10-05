@@ -29,13 +29,13 @@
   border-radius: 50px;
 }
 
-@media screen and (max-width: 769px){
+@media screen and (max-width: 768px){
   .account_desktop {
     display: none;
   }
 }
 
-@media screen and (max-width: 551px){
+@media screen and (max-width: 550px){
   .account {
     margin-bottom: 46px;
   }

@@ -6,7 +6,7 @@
   font-weight: 400;
 }
 
-@media screen and (max-width: 551px) {
+@media screen and (max-width: 550px) {
   .title {
     font-size: 18px;
     padding-bottom: 28px;

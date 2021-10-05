@@ -73,7 +73,7 @@
   margin-bottom: 179px;
 }
 
-@media screen and (max-width: 769px){
+@media screen and (max-width: 768px){
   .page__auth {
     margin-top: 214px;
     margin-bottom: 232px;

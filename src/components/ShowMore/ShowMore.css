@@ -10,10 +10,11 @@
 .more__button {
   margin: 0;
   padding: 11px 0 9px;
-  border: none;
   width: 100%;
+  border: none;
+  border-radius: 6px;
   background-color: #f4f4f4;
   font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
 }
-
-

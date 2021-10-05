@@ -49,17 +49,20 @@
   color: inherit;
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 768px) {
   .page__footer {
     padding-right: 30px;
     padding-left: 30px;
+  }
+  .footer {
+    background-color: #fafafa;
   }
   .footer__info {
     font-size: 13px;
   }
 }
 
-@media screen and (max-width: 551px) {
+@media screen and (max-width: 550px) {
   .page__footer {
     padding: 79px 10px 10px;
   }

@@ -24,7 +24,7 @@
   background: center/ contain no-repeat url('../../images/lines.svg');
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 768px) {
   .content__promo {
     padding: 0 44px 70px 44px;
   }
@@ -43,7 +43,7 @@
 }
 
 
-@media screen and (max-width: 551px) {
+@media screen and (max-width: 550px) {
   .content__promo {
     padding-left: 10px;
     padding-right: 10px;

@@ -41,7 +41,7 @@
   border-radius: 10px;
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 768px) {
   .content__techs {
     padding: 90px 60px;
   }
@@ -61,7 +61,7 @@
   }
 }
 
-@media screen and (max-width: 551px) {
+@media screen and (max-width: 550px) {
   .content__techs {
     padding: 70px 18px;
   }

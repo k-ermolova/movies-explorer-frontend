@@ -54,7 +54,7 @@
   background: no-repeat url('../../images/remove.svg') center #f4f4f4;
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 768px) {
   .card__image {
     width: 342px;
     min-height: 190px;
@@ -62,7 +62,7 @@
   }
 }
 
-@media screen and (max-width: 551px) {
+@media screen and (max-width: 550px) {
   .card__image {
     width: 300px;
     min-height: 168px;
