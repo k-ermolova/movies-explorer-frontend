@@ -3,6 +3,7 @@ import Logo from "../Logo/Logo";
 import AccountLink from "../AccountLink/AccountLink";
 import Navigation from "../Navigation/Navigation";
 import Menu from "../Menu/Menu";
+import {Link} from "react-router-dom";
 
 function Header(props) {
   return (props.desktopMenu ? (
@@ -15,7 +16,10 @@ function Header(props) {
         </header>)
       : <header className="header page__header">
         <Logo/>
-        <Navigation/>
+        <ul className='header__container'>
+          <li className='header__item'><Link className='header__link' to='/signup'>Регистрация</Link></li>
+          <li className='header__item header__item_type_button'><Link className='header__link' to='/signin'>Войти</Link></li>
+        </ul>
       </header>
   );
 }

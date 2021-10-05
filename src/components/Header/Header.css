@@ -24,6 +24,35 @@
   cursor: pointer;
 }
 
+.header__container {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+}
+
+.header__item {
+  align-self: center;
+  cursor: pointer;
+}
+
+.header__link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.header__item:first-child {
+  margin-right: 30px;
+}
+
+.header__item_type_button {
+  background-color: #3456f3;
+  border-radius: 3px;
+  padding: 8px 20px;
+  color: #fff;
+}
+
 @media screen and (max-width: 769px) {
   .page__header {
     padding: 0 30px;
@@ -46,5 +75,16 @@
   .header__menu {
     width: 40px;
     height: 43px;
+  }
+  .header__item {
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 16px;
+  }
+  .header__item:first-child {
+    margin-right: 14px;
+  }
+  .header__item_type_button {
+    padding: 5px 12px;
   }
 }
