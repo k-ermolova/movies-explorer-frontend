@@ -1,5 +1,6 @@
 .navbar {
   display: flex;
+  justify-self: flex-start;
 }
 
 .navbar__container {
@@ -12,7 +13,7 @@
 }
 
 .navbar__container_mobile {
-  padding: 105px 0 621px 0;
+  margin-top: 136px;
   flex-direction: column;
   font-size: 18px;
   font-weight: 500;
@@ -65,10 +66,7 @@
   .page__header {
     padding: 0 14px;
   }
-  .navbar__item {
-    font-size: 10px;
-  }
-  .navbar__item:first-child {
-    margin-right: 14px;
+  .navbar__container_mobile {
+    margin-top: 144px;
   }
 }
