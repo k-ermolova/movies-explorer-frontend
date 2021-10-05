@@ -28,13 +28,16 @@
   .content__promo {
     padding: 0 44px 70px 44px;
   }
+
   .promo {
     align-items: center;
   }
+
   .promo__title {
     margin: 300px 0 140px;
     text-align: center;
   }
+
   .promo__lines {
     width: 100%;
     align-self: center;
@@ -48,12 +51,14 @@
     padding-left: 10px;
     padding-right: 10px;
   }
+
   .promo__title {
     font-size: 29px;
     line-height: 39px;
     margin: 183px 0 60px;
     align-self: center;
   }
+
   .promo__lines {
     width: 722px;
   }

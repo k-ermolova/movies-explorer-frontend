@@ -58,12 +58,15 @@
   .page__header {
     padding: 0 30px;
   }
+
   .header__navbar_movies {
     display: none;
   }
+
   .header__profile-container {
     display: none;
   }
+
   .header__menu {
     display: block;
   }
@@ -73,18 +76,22 @@
   .page__header {
     padding: 0 14px;
   }
+
   .header__menu {
     width: 40px;
     height: 43px;
   }
+
   .header__item {
     font-size: 10px;
     font-weight: 500;
     line-height: 16px;
   }
+
   .header__item:first-child {
     margin-right: 14px;
   }
+
   .header__item_type_button {
     padding: 5px 12px;
   }

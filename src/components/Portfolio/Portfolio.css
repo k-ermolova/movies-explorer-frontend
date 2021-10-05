@@ -38,9 +38,11 @@
   .content__portfolio {
     padding: 0 50px 71px;
   }
+
   .portfolio {
-  background-color: #fafafa;
+    background-color: #fafafa;
   }
+
   .portfolio__item {
     font-size: 28px;
   }
@@ -50,11 +52,13 @@
   .content__portfolio {
     padding: 0 14px 51px;
   }
+
   .portfolio__title {
     margin-bottom: 40px;
     font-size: 14px;
     line-height: 20px;
   }
+
   .portfolio__item {
     font-size: 18px;
     line-height: 28px;

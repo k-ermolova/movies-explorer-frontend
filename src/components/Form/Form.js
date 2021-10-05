@@ -10,11 +10,11 @@ function Form(props) {
         <form className='form'>
           <fieldset className='form__field'>
             <label className='form__label'>Имя</label>
-            <input className='input-text' type='text'/>
+            <input className='input-text' type='text' required/>
             <label className='form__label'>E-mail</label>
-            <input className='input-text' type='email'/>
+            <input className='input-text' type='email' required/>
             <label className='form__label'>Пароль</label>
-            <input className='input-text' type='password'/>
+            <input className='input-text' type='password' required/>
           </fieldset>
           <button className='form__button' type='submit'>Зарегистрироваться</button>
           <p className='form__question'>Уже зарегистрированы?&nbsp;
@@ -29,9 +29,9 @@ function Form(props) {
         <form className='form'>
           <fieldset className='form__field'>
             <label className='form__label'>E-mail</label>
-            <input className='input-text input-text_type_login' type='email'/>
+            <input className='input-text input-text_type_login' type='email' required/>
             <label className='form__label'>Пароль</label>
-            <input className='input-text input-text_type_login' type='password'/>
+            <input className='input-text input-text_type_login' type='password' required/>
           </fieldset>
           <button className='form__button' type='submit'>Войти</button>
           <p className='form__question'>Ещё не зарегистрированы?&nbsp;

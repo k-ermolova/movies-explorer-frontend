@@ -116,18 +116,22 @@
     margin-bottom: 20px;
     font-size: 30px;
   }
+
   .student__intro {
     font-size: 11px;
   }
+
   .student__description {
     margin-bottom: 40px;
     font-size: 11px;
   }
+
   .student__image {
     width: 292px;
     height: 352px;
     justify-self: center;
   }
+
   .student__link {
     margin-right: 26px;
   }

@@ -16,6 +16,7 @@
   .movies__cards {
     padding: 70px 30px 30px;
   }
+
   .cards-list {
     grid-template-columns: repeat(auto-fit, 342px);
     gap: 24px;
@@ -26,6 +27,7 @@
   .movies__cards {
     padding: 40px 10px 0;
   }
+
   .cards-list {
     grid-template-columns: repeat(auto-fit, 300px);
   }

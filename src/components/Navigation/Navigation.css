@@ -24,12 +24,13 @@
   cursor: pointer;
   margin-right: 16px;
 }
+
 .navbar__item:last-child {
   margin-right: 0;
 }
 
 .navbar__item_mobile {
- margin-bottom: 28px;
+  margin-bottom: 28px;
 }
 
 .navbar__item_mobile:last-child {
@@ -54,9 +55,11 @@
   .page__header {
     padding: 0 30px;
   }
+
   .navbar__container {
     display: none;
   }
+
   .navbar__container_mobile {
     display: flex;
   }
@@ -66,6 +69,7 @@
   .page__header {
     padding: 0 14px;
   }
+
   .navbar__container_mobile {
     margin-top: 144px;
   }

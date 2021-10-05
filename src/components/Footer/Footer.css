@@ -23,6 +23,7 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .footer__data {
   grid-area: year;
 }
@@ -54,9 +55,11 @@
     padding-right: 30px;
     padding-left: 30px;
   }
+
   .footer {
     background-color: #fafafa;
   }
+
   .footer__info {
     font-size: 13px;
   }
@@ -66,13 +69,16 @@
   .page__footer {
     padding: 79px 10px 10px;
   }
+
   .footer {
     flex-direction: column;
   }
+
   .footer__info {
     font-size: 12px;
     margin-bottom: 30px;
   }
+
   .footer__container {
     text-align: center;
     display: grid;
@@ -81,14 +87,17 @@
   'links'
   'year';
   }
+
   .footer__items {
     flex-direction: column;
   }
+
   .footer__item {
     margin-right: 0;
     margin-bottom: 12px;
     font-size: 12px;
   }
+
   .footer__data {
     font-size: 12px;
     color: #a0a0a0;

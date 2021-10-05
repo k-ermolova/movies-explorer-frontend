@@ -61,14 +61,17 @@
   .content__about {
     padding: 90px 50px;
   }
+
   .about__container {
     padding-bottom: 93px;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
   }
+
   .about__title {
     margin-bottom: 22px;
   }
+
   .about__paragraph {
     font-size: 12px;
   }
@@ -78,30 +81,36 @@
   .content__about {
     padding: 70px 18px;
   }
+
   .about__container {
     padding: 60px 0 4px;
     display: flex;
     flex-direction: column;
     gap: 0;
   }
+
   .about__title {
     margin-bottom: 16px;
     font-size: 18px;
     line-height: 22px;
   }
+
   .about__paragraph {
     font-size: 11px;
     line-height: 16px;
     margin-bottom: 56px;
   }
+
   .about__duration {
     grid-template-columns: 35% 65%;
   }
+
   .about__item {
     font-size: 11px;
     padding: 11px 0;
 
   }
+
   .about__sign {
     margin-top: 10px;
     font-size: 11px;
