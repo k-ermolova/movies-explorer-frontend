@@ -1,0 +1,42 @@
+.account {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100px;
+  height: 32px;
+  align-items: center;
+  align-self: center;
+  font-size: 12px;
+  font-weight: 500;
+  background-color: #fff;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
+  border-radius: 40px;
+}
+
+.account__title {
+  font-size: 12px;
+  font-weight: 500;
+  padding-left: 8px;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+}
+
+.account__icon {
+  width: 26px;
+  height: 26px;
+  background: #f4f4f4 no-repeat center url("../../images/profile.svg");
+  border-radius: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .account_desktop {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .account {
+    margin-bottom: 46px;
+  }
+}
