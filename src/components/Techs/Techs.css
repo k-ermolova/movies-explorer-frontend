@@ -30,7 +30,7 @@
   justify-content: center;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, 90px);
   gap: 10px;
 }
 
@@ -43,7 +43,7 @@
 
 @media screen and (max-width: 768px) {
   .content__techs {
-    padding: 90px 60px;
+    padding: 90px 50px;
   }
 
   .techs__title {
