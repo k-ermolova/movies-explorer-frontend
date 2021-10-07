@@ -3,11 +3,11 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
 import './Movies.css';
 
-function Movies() {
+function Movies(props) {
   return(
   <main className='movies'>
-    <SearchForm/>
-    <MoviesCardList/>
+    <SearchForm onChange={props.onChange} onSubmit={props.onSubmit}/>
+    <MoviesCardList cards={props.cards}/>
   </main>
   );
 }

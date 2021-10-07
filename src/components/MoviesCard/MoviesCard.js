@@ -1,26 +1,18 @@
+import {Link} from 'react-router-dom';
+
 import './MoviesCard.css';
 
 function MoviesCard(props) {
-  if (props.button === 'remove') {
-    return(
-      <li className='card'>
-        <div className='card__heading'>
-          <h3 className='card__title'>В погоне за Бенкси</h3>
-          <p className='card__duration'>27 минут</p>
-        </div>
-        <img className='card__image' src={props.image} alt='Постер к фильму'/>
-        <button className='card__button card__button_remove'/>
-      </li>
-    )
-  }
-  return(
+  return (
     <li className='card'>
       <div className='card__heading'>
-        <h3 className='card__title'>В погоне за Бенкси</h3>
-        <p className='card__duration'>27 минут</p>
+        <h3 className='card__title'>{props.card.nameRU}</h3>
+        <p className='card__duration'>{`${props.card.duration} минут`}</p>
       </div>
-      <img className='card__image' src={props.image} alt='Постер к фильму'/>
-      {props.saved ? <button className='card__button card__button_saved'/> : <button className='card__button'>Сохранить</button>}
+      <Link to={{pathname: props.card.trailerLink}} target='_blank'>
+        <img className='card__image' src={`https://api.nomoreparties.co${props.card.image.url}`} alt='Постер к фильму'/>
+      </Link>
+      <button className='card__button'>Сохранить</button>
     </li>
   )
 }
