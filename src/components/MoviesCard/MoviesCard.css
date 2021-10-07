@@ -6,31 +6,37 @@
 }
 
 .card__heading {
+  max-height: 18px;
   padding: 18px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 10px;
 }
 
 .card__title {
   margin: 0;
   font-size: 15px;
-  line-height: 18px;
   font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .card__image {
-  max-width: 360px;
+  width: 360px;
   min-height: 200px;
   max-height: 200px;
   vertical-align: bottom;
-
+  cursor: pointer;
 }
 
 .card__duration {
   margin: 0;
   font-size: 13px;
   color: #a0a0a0;
+  align-self: center;
+  text-align: center;
 }
 
 .card__button {
