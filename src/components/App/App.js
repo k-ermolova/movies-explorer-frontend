@@ -11,11 +11,13 @@ import Login from '../Login/Login';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import moviesApi from '../../utils/MoviesApi';
+import mainApi from '../../utils/MainApi';
 
 import './App.css';
 
 function App() {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
   const [searchValue, setSearchValue] = useState('');
 
@@ -30,10 +32,15 @@ function App() {
   }
 
   useEffect(() => {
-    moviesApi.getMovies()
-      .then(cards => setCards(cards))
-      .catch(err => console.log(err));
-  }, []);
+    if (loggedIn) {
+      Promise.all([mainApi.getUserInfo(), moviesApi.getMovies()])
+        .then(([userData, movies]) => {
+          setCurrentUser(userData);
+          setCards(movies);
+        })
+        .catch(err => console.log(err));
+    }
+  }, [loggedIn]);
 
   const handleChange = (evt) => {
     moviesInput = evt.target.value;
