@@ -12,6 +12,7 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import moviesApi from '../../utils/MoviesApi';
 import mainApi from '../../utils/MainApi';
+import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 
 import './App.css';
 
@@ -20,6 +21,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
   const [searchValue, setSearchValue] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
 
   let moviesInput;
 
@@ -62,7 +64,7 @@ function App() {
   });
 
   return (
-    <div className='App'>
+    <CurrentUserContext.Provider value={currentUser}>
       <Switch>
         <Route exact path='/'>
           <Header/>
@@ -93,7 +95,7 @@ function App() {
           <PageNotFound/>
         </Route>
       </Switch>
-    </div>
+    </CurrentUserContext.Provider>
   );
 }
 
