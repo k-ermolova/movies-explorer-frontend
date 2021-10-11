@@ -13,6 +13,7 @@ import Profile from '../Profile/Profile';
 import moviesApi from '../../utils/MoviesApi';
 import mainApi from '../../utils/MainApi';
 import {CurrentUserContext} from '../../contexts/CurrentUserContext';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import './App.css';
 
@@ -71,11 +72,18 @@ function App() {
           <Main/>
           <Footer/>
         </Route>
-        <Route path='/movies'>
-          <Header desktopMenu={true} onMenu={handleOpening} isMenuOpened={isMenuOpened} onClose={handleClosing}/>
-          <Movies cards={filteredCards} onChange={handleChange} onSubmit={handleSubmit}/>
-          <Footer/>
+        <Route path='/signup'>
+          <Register/>
         </Route>
+        <Route path='/signin'>
+          <Login/>
+        </Route>
+        <ProtectedRoute path='/movies' component={Movies} cards={filteredCards} onChange={handleChange} onSubmit={handleSubmit} />
+        {/*<Route path='/movies'>*/}
+        {/*  <Header desktopMenu={true} onMenu={handleOpening} isMenuOpened={isMenuOpened} onClose={handleClosing}/>*/}
+        {/*  <Movies cards={filteredCards} onChange={handleChange} onSubmit={handleSubmit}/>*/}
+        {/*  <Footer/>*/}
+        {/*</Route>*/}
         {/*<Route path='/saved-movies'>*/}
         {/*  <Header desktopMenu={true} onMenu={handleOpening} isMenuOpened={isMenuOpened} onClose={handleClosing}/>*/}
         {/*  <SavedMovies/>*/}
@@ -84,12 +92,6 @@ function App() {
         <Route path='/profile'>
           <Header desktopMenu={true} onMenu={handleOpening} isMenuOpened={isMenuOpened} onClose={handleClosing}/>
           <Profile/>
-        </Route>
-        <Route path='/signup'>
-          <Register/>
-        </Route>
-        <Route path='/signin'>
-          <Login/>
         </Route>
         <Route path='*'>
           <PageNotFound/>

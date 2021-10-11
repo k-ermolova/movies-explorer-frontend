@@ -18,7 +18,7 @@ class MainApi {
     }).then(this._onError);
   }
 
-  updateUserInfo() {
+  updateUserInfo(data) {
     return fetch(`${this._url}users/me`, {
       method: 'PATCH',
       headers: {
