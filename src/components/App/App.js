@@ -1,4 +1,4 @@
-import {Route, Switch, useRouteMatch} from 'react-router-dom';
+import {Route, Switch, useHistory, useRouteMatch} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 
 import Header from '../Header/Header';
@@ -24,6 +24,8 @@ function App() {
   const [searchValue, setSearchValue] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
 
+  const history = useHistory();
+
   let moviesInput;
 
   const handleOpening = () => {
@@ -33,6 +35,51 @@ function App() {
   const handleClosing = () => {
     setIsMenuOpened(false);
   }
+
+  const handleLogin = ({email, password}) => {
+    return mainApi
+      .authorize(email, password)
+      .then(data => {
+        if (data.token) {
+          setLoggedIn(true);
+          localStorage.setItem('jwt', data.token);
+          history.push('/movies');
+        }
+      }).catch(err => console.log(err));
+  }
+
+  const handleRegister = ({name, email, password}) => {
+    return mainApi
+      .register(name, email, password)
+      .then(data => {
+        if (data.token) {
+          setLoggedIn(true);
+          localStorage.setItem('jwt', data.token);
+          history.push('/movies');
+        }
+      }).catch(err => console.log(err));
+  }
+
+  const tokenCheck = () => {
+    if (localStorage.getItem('jwt')) {
+      const jwt = localStorage.getItem('jwt');
+      mainApi
+        .checkToken(jwt)
+        .then(() => setLoggedIn(true))
+        .catch(err => console.log(err));
+    }
+  }
+
+  useEffect(() => {
+    tokenCheck();
+  }, []);
+
+  useEffect(() => {
+    if (loggedIn) {
+      history.push('/movies');
+    }
+  }, [loggedIn, history]);
+
 
   useEffect(() => {
     if (loggedIn) {
@@ -62,6 +109,7 @@ function App() {
     if (checkContent(value.nameRU, searchValue)) {
       return value;
     }
+    return '';
   });
 
   return (
@@ -75,10 +123,10 @@ function App() {
           <Footer/>
         </Route>
         <Route path='/signup'>
-          <Register/>
+          <Register onRegister={handleRegister}/>
         </Route>
         <Route path='/signin'>
-          <Login/>
+          <Login onLogin={handleLogin}/>
         </Route>
         <ProtectedRoute path='/movies' component={Movies} cards={filteredCards} onChange={handleChange}
                         onSubmit={handleSubmit}/>
