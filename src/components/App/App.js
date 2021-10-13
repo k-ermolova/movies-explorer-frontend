@@ -1,4 +1,4 @@
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, useRouteMatch} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 
 import Header from '../Header/Header';
@@ -66,6 +66,8 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
+      {useRouteMatch(['/movies', '/saved-movies', '/profile']) ? (
+        <Header desktopMenu={true} onMenu={handleOpening} isMenuOpened={isMenuOpened} onClose={handleClosing}/>) : ''}
       <Switch>
         <Route exact path='/'>
           <Header/>
@@ -78,25 +80,15 @@ function App() {
         <Route path='/signin'>
           <Login/>
         </Route>
-        <ProtectedRoute path='/movies' component={Movies} cards={filteredCards} onChange={handleChange} onSubmit={handleSubmit} />
-        {/*<Route path='/movies'>*/}
-        {/*  <Header desktopMenu={true} onMenu={handleOpening} isMenuOpened={isMenuOpened} onClose={handleClosing}/>*/}
-        {/*  <Movies cards={filteredCards} onChange={handleChange} onSubmit={handleSubmit}/>*/}
-        {/*  <Footer/>*/}
-        {/*</Route>*/}
-        {/*<Route path='/saved-movies'>*/}
-        {/*  <Header desktopMenu={true} onMenu={handleOpening} isMenuOpened={isMenuOpened} onClose={handleClosing}/>*/}
-        {/*  <SavedMovies/>*/}
-        {/*  <Footer/>*/}
-        {/*</Route>*/}
-        <Route path='/profile'>
-          <Header desktopMenu={true} onMenu={handleOpening} isMenuOpened={isMenuOpened} onClose={handleClosing}/>
-          <Profile/>
-        </Route>
+        <ProtectedRoute path='/movies' component={Movies} cards={filteredCards} onChange={handleChange}
+                        onSubmit={handleSubmit}/>
+        <ProtectedRoute path='/saved-movies' component={SavedMovies}/>
+        <ProtectedRoute path='/profile' component={Profile}/>
         <Route path='*'>
           <PageNotFound/>
         </Route>
       </Switch>
+      {useRouteMatch(['/movies', '/saved-movies']) ? (<Footer/>) : ''}
     </CurrentUserContext.Provider>
   );
 }
