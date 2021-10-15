@@ -52,13 +52,16 @@
   border: none;
   background: transparent;
   font-size: 13px;
+  cursor: pointer;
 }
 
 .profile__exit-button {
   color: #ee3465;
-  text-decoration: none;
+  background-color: transparent;
+  border: none;
   font-size: 13px;
   font-weight: 500;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 550px) {

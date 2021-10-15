@@ -1,8 +1,6 @@
-import {Link} from 'react-router-dom';
-
 import './Profile.css';
 
-function Profile() {
+function Profile(props) {
   return(
     <div className='profile page__profile'>
       <h3 className='profile__title'>Привет, Виталий!</h3>
@@ -13,7 +11,7 @@ function Profile() {
         <input className='profile__input' type='email' name='email' maxLength='30' value='pochta@yandex.ru'/>
         <button className='profile__edit-button' type='submit'>Редактировать</button>
       </form>
-      <Link className='profile__exit-button' to='/signin'>Выйти из аккаунта</Link>
+      <button className='profile__exit-button' onClick={props.onLogOut}>Выйти из аккаунта</button>
     </div>
   );
 }
