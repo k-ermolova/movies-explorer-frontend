@@ -11,7 +11,7 @@ class MainApi {
   }
 
   register(name, email, password) {
-    return fetch(`${this._url}/signup`, {
+    return fetch(`${this._url}signup`, {
       method: 'POST',
       headers: {
         'accept': 'application/json',
@@ -22,7 +22,7 @@ class MainApi {
   }
 
   authorize(email, password) {
-    return fetch(`${this._url}/signin`, {
+    return fetch(`${this._url}signin`, {
       method: 'POST',
       headers: {
         'accept': 'application/json',
@@ -33,7 +33,7 @@ class MainApi {
   }
 
   checkToken(token) {
-    return fetch(`${this._url}`, {
+    return fetch(`${this._url}users/me`, {
       headers: {
         'accept': 'application/json',
         'content-type': 'application/json',
@@ -43,7 +43,7 @@ class MainApi {
   }
 
   getUserInfo() {
-    return fetch(`${this._url}/users/me`, {
+    return fetch(`${this._url}users/me`, {
       headers: {
         'content-type': 'application/json',
         authorization: `Bearer ${localStorage.getItem('jwt')}`,
@@ -52,7 +52,7 @@ class MainApi {
   }
 
   updateUserInfo(data) {
-    return fetch(`${this._url}/users/me`, {
+    return fetch(`${this._url}users/me`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json',
@@ -66,7 +66,7 @@ class MainApi {
   }
 
   addMovie(data) {
-    return fetch(`${this._url}/movies`, {
+    return fetch(`${this._url}movies`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -89,7 +89,7 @@ class MainApi {
   }
 
   deleteMovie(id) {
-    return fetch(`${this._url}/movies/${id}`, {
+    return fetch(`${this._url}movies/${id}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
@@ -100,5 +100,5 @@ class MainApi {
 }
 
 export default new MainApi({
-  baseUrl: 'https://movies-explorer-ermolova.nomoredomains.club/api',
+  baseUrl: 'https://movies-explorer-ermolova.nomoredomains.club/api/',
 });
