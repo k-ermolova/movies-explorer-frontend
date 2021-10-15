@@ -22,6 +22,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
   const [searchValue, setSearchValue] = useState('');
+  const [inputValue, setInputValue] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
 
   const history = useHistory();
@@ -60,12 +61,20 @@ function App() {
       }).catch(err => console.log(err));
   }
 
+  const handleLogOut = () => {
+    setLoggedIn(false);
+    localStorage.removeItem('jwt');
+    history.push('/');
+  }
+
   const tokenCheck = () => {
     if (localStorage.getItem('jwt')) {
       const jwt = localStorage.getItem('jwt');
       mainApi
         .checkToken(jwt)
-        .then(() => setLoggedIn(true))
+        .then(() => {
+          setLoggedIn(true)
+        })
         .catch(err => console.log(err));
     }
   }
@@ -96,6 +105,10 @@ function App() {
     moviesInput = evt.target.value;
   }
 
+  const handleInputChange = (evt) => {
+    setInputValue(evt.target.value);
+  }
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     setSearchValue(moviesInput);
@@ -123,15 +136,15 @@ function App() {
           <Footer/>
         </Route>
         <Route path='/signup'>
-          <Register onRegister={handleRegister}/>
+          <Register onRegister={handleRegister} onChange={handleInputChange} value={inputValue}/>
         </Route>
         <Route path='/signin'>
-          <Login onLogin={handleLogin}/>
+          <Login onLogin={handleLogin} onChange={handleInputChange} value={inputValue}/>
         </Route>
         <ProtectedRoute path='/movies' component={Movies} cards={filteredCards} onChange={handleChange}
-                        onSubmit={handleSubmit}/>
-        <ProtectedRoute path='/saved-movies' component={SavedMovies}/>
-        <ProtectedRoute path='/profile' component={Profile}/>
+                        onSubmit={handleSubmit} loggedIn={loggedIn}/>
+        <ProtectedRoute path='/saved-movies' component={SavedMovies} loggedIn={loggedIn}/>
+        <ProtectedRoute path='/profile' component={Profile} onLogOut={handleLogOut} loggedIn={loggedIn}/>
         <Route path='*'>
           <PageNotFound/>
         </Route>
