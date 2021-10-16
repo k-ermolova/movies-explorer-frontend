@@ -79,6 +79,13 @@ function App() {
     }
   }
 
+  const handleUpdateUserInfo = (name, email) => {
+    mainApi
+      .updateUserInfo(name, email)
+      .then((userData) => setCurrentUser(userData))
+      .catch(err => console.log(err));
+  }
+
   useEffect(() => {
     tokenCheck();
   }, []);
@@ -144,7 +151,8 @@ function App() {
         <ProtectedRoute path='/movies' component={Movies} cards={filteredCards} onChange={handleChange}
                         onSubmit={handleSubmit} loggedIn={loggedIn}/>
         <ProtectedRoute path='/saved-movies' component={SavedMovies} loggedIn={loggedIn}/>
-        <ProtectedRoute path='/profile' component={Profile} onLogOut={handleLogOut} loggedIn={loggedIn}/>
+        <ProtectedRoute path='/profile' component={Profile} onLogOut={handleLogOut} loggedIn={loggedIn}
+                        user={currentUser} onSubmit={handleUpdateUserInfo}/>
         <Route path='*'>
           <PageNotFound/>
         </Route>
