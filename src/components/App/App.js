@@ -154,7 +154,7 @@ function App() {
         <ProtectedRoute path='/profile' component={Profile} onLogOut={handleLogOut} loggedIn={loggedIn}
                         user={currentUser} onSubmit={handleUpdateUserInfo}/>
         <Route path='*'>
-          <PageNotFound/>
+          <PageNotFound history={history}/>
         </Route>
       </Switch>
       {useRouteMatch(['/movies', '/saved-movies']) ? (<Footer/>) : ''}

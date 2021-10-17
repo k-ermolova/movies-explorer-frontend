@@ -7,7 +7,10 @@ function Profile(props) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    props.onSubmit(userName, userEmail);
+    props.onSubmit({
+      name: userName,
+      email: userEmail,
+    });
   }
 
   return (
