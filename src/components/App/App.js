@@ -12,6 +12,7 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import moviesApi from '../../utils/MoviesApi';
 import mainApi from '../../utils/MainApi';
+import {useFormWithValidation} from '../../utils/Validation';
 import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
@@ -24,6 +25,7 @@ function App() {
   const [searchValue, setSearchValue] = useState('');
   const [inputValue, setInputValue] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const history = useHistory();
 
@@ -46,7 +48,15 @@ function App() {
           localStorage.setItem('jwt', data.token);
           history.push('/movies');
         }
-      }).catch(err => console.log(err));
+      }).catch(err => {
+        if (err.status === 401) {
+          setErrorMessage('Введен неверный логин или пароль.');
+        } else if (err.status === 400) {
+          setErrorMessage('Проверьте формат введённых данных.');
+        } else {
+          setErrorMessage('Что-то пошло не так...');
+        }
+      });
   }
 
   const handleRegister = ({name, email, password}) => {
@@ -58,7 +68,15 @@ function App() {
           localStorage.setItem('jwt', data.token);
           history.push('/movies');
         }
-      }).catch(err => console.log(err));
+      }).catch(err => {
+        if (err.status === 409) {
+          setErrorMessage('Пользователь с указанным email уже существует.')
+        } else if (err.status === 400) {
+          setErrorMessage('Проверьте формат введённых данных.');
+        } else {
+          setErrorMessage('Что-то пошло не так...');
+        }
+      });
   }
 
   const handleLogOut = () => {
@@ -94,7 +112,7 @@ function App() {
     if (loggedIn) {
       history.push('/movies');
     }
-  }, [loggedIn, history]);
+  }, [history, loggedIn]);
 
 
   useEffect(() => {
@@ -143,10 +161,12 @@ function App() {
           <Footer/>
         </Route>
         <Route path='/signup'>
-          <Register onRegister={handleRegister} onChange={handleInputChange} value={inputValue}/>
+          <Register onRegister={handleRegister} onChange={handleInputChange} value={inputValue}
+                    validation={useFormWithValidation} message={errorMessage}/>
         </Route>
         <Route path='/signin'>
-          <Login onLogin={handleLogin} onChange={handleInputChange} value={inputValue}/>
+          <Login onLogin={handleLogin} onChange={handleInputChange} value={inputValue}
+                 validation={useFormWithValidation} message={errorMessage}/>
         </Route>
         <ProtectedRoute path='/movies' component={Movies} cards={filteredCards} onChange={handleChange}
                         onSubmit={handleSubmit} loggedIn={loggedIn}/>

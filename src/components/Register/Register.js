@@ -28,16 +28,18 @@ function Register(props) {
     <div className='auth page__auth'>
       <Logo/>
       <h3 className='auth__title'>Добро пожаловать!</h3>
-      <form className='form' onSubmit={handleSubmit}>
+      <form className='form' onSubmit={handleSubmit} noValidate>
         <fieldset className='form__field'>
           <label className='form__label'>Имя</label>
-          <input className='input-text' type='text' name='name' onChange={handleChange} value={userData.name} required/>
+          <input className='input-text' type='text' name='name' onChange={handleChange} value={userData.name}
+                 minLength={2} maxLength={30} required/>
           <label className='form__label'>E-mail</label>
           <input className='input-text' type='email' name='email' onChange={handleChange} value={userData.email}
                  required/>
           <label className='form__label'>Пароль</label>
           <input className='input-text' type='password' name='password' onChange={handleChange}
                  value={userData.password} required/>
+          {props.message ? <p className='error'>{props.message}</p> : ''}
         </fieldset>
         <button className='form__button' type='submit'>Зарегистрироваться</button>
         <p className='form__question'>Уже зарегистрированы?&nbsp;

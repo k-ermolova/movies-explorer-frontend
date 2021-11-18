@@ -28,7 +28,7 @@ function Login(props) {
     <div className='auth page__auth'>
       <Logo/>
       <h3 className='auth__title'>Рады видеть!</h3>
-      <form className='form' onSubmit={handleSubmit}>
+      <form className='form' onSubmit={handleSubmit} noValidate>
         <fieldset className='form__field'>
           <label className='form__label'>E-mail</label>
           <input className='input-text input-text_type_login' type='email' name='email' onChange={handleChange}
@@ -36,6 +36,7 @@ function Login(props) {
           <label className='form__label'>Пароль</label>
           <input className='input-text input-text_type_login' type='password' name='password' onChange={handleChange}
                  value={userData.password} required/>
+          {props.message ? <p className='error'>{props.message}</p> : ''}
         </fieldset>
         <button className='form__button' type='submit'>Войти</button>
         <p className='form__question'>Ещё не зарегистрированы?&nbsp;
