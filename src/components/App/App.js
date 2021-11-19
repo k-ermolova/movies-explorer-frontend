@@ -39,7 +39,8 @@ function App() {
     setIsMenuOpened(false);
   }
 
-  const handleLogin = ({email, password}) => {
+  const handleLogin = (userData) => {
+    const {email, password} = userData;
     return mainApi
       .authorize(email, password)
       .then(data => {
@@ -50,16 +51,17 @@ function App() {
         }
       }).catch(err => {
         if (err.status === 401) {
-          setErrorMessage('Введен неверный логин или пароль.');
+          handleErrorMessage('Введен неверный логин или пароль.');
         } else if (err.status === 400) {
-          setErrorMessage('Проверьте формат введённых данных.');
+          handleErrorMessage('Проверьте формат введённых данных.');
         } else {
-          setErrorMessage('Что-то пошло не так...');
+          handleErrorMessage('Что-то пошло не так...');
         }
       });
   }
 
-  const handleRegister = ({name, email, password}) => {
+  const handleRegister = (userData) => {
+    const {name, email, password} = userData;
     return mainApi
       .register(name, email, password)
       .then(data => {
@@ -70,11 +72,11 @@ function App() {
         }
       }).catch(err => {
         if (err.status === 409) {
-          setErrorMessage('Пользователь с указанным email уже существует.')
+          handleErrorMessage('Пользователь с указанным email уже существует.')
         } else if (err.status === 400) {
-          setErrorMessage('Проверьте формат введённых данных.');
+          handleErrorMessage('Проверьте формат введённых данных.');
         } else {
-          setErrorMessage('Что-то пошло не так...');
+          handleErrorMessage('Что-то пошло не так...');
         }
       });
   }
@@ -102,6 +104,11 @@ function App() {
       .updateUserInfo(name, email)
       .then((userData) => setCurrentUser(userData))
       .catch(err => console.log(err));
+  }
+
+  const handleErrorMessage = (err) => {
+    setErrorMessage(err);
+    setTimeout(() => setErrorMessage(''), 4000);
   }
 
   useEffect(() => {

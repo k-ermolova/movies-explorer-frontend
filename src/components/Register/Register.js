@@ -1,47 +1,39 @@
-import {useState} from 'react';
 import {Link} from 'react-router-dom';
 
 import Logo from '../Logo/Logo';
 
 function Register(props) {
-  const [userData, setUserData] = useState({
-    name: '',
-    email: '',
-    password: ''
-  });
-
-  function handleChange(evt) {
-    const {name, value} = evt.target;
-    setUserData({
-      ...userData,
-      [name]: value
-    });
-  }
+  const {values, handleChange, errors, isValid} = props.validation({});
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    const {name, email, password} = userData;
-    props.onRegister({name, email, password});
+    props.onRegister(values);
   }
 
   return (
     <div className='auth page__auth'>
       <Logo/>
       <h3 className='auth__title'>Добро пожаловать!</h3>
-      <form className='form' onSubmit={handleSubmit} noValidate>
+      <form className='form' onSubmit={handleSubmit}>
         <fieldset className='form__field'>
           <label className='form__label'>Имя</label>
-          <input className='input-text' type='text' name='name' onChange={handleChange} value={userData.name}
+          <input className={`input-text ${errors.name ? 'input-text_error' : ''}`} type='text' name='name'
+                 onChange={handleChange} value={values.name}
                  minLength={2} maxLength={30} required/>
+          {errors.name ? <p className='error'>{errors.name}</p> : ''}
           <label className='form__label'>E-mail</label>
-          <input className='input-text' type='email' name='email' onChange={handleChange} value={userData.email}
+          <input className={`input-text ${errors.email ? 'input-text_error' : ''}`} type='email' name='email'
+                 onChange={handleChange} value={values.email}
                  required/>
+          {errors.email ? <p className='error'>{errors.email}</p> : ''}
           <label className='form__label'>Пароль</label>
-          <input className='input-text' type='password' name='password' onChange={handleChange}
-                 value={userData.password} required/>
+          <input className={`input-text ${errors.password ? 'input-text_error' : ''}`} type='password'
+                 name='password' onChange={handleChange}
+                 value={values.password} required/>
+          {errors.password ? <p className='error'>{errors.password}</p> : ''}
           {props.message ? <p className='error'>{props.message}</p> : ''}
         </fieldset>
-        <button className='form__button' type='submit'>Зарегистрироваться</button>
+        <button className='form__button' type='submit' disabled={!isValid}>Зарегистрироваться</button>
         <p className='form__question'>Уже зарегистрированы?&nbsp;
           <Link to='/signin' className='form__link'>Войти</Link>
         </p>
