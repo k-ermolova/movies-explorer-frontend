@@ -41,7 +41,7 @@
 }
 
 .profile__input:last-of-type {
-  margin-bottom: 220px;
+  /*margin-bottom: 220px;*/
   border-bottom: none;
 }
 

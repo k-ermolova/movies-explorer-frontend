@@ -58,6 +58,7 @@
   .navbar__container_mobile {
     display: flex;
     gap: 0;
+    padding: 0;
   }
 }
 
