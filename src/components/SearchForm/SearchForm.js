@@ -10,7 +10,7 @@ function SearchForm(props) {
           <input className='search__input' placeholder='Фильм' required onChange={props.onChange}/>
           <button className='search__button' type='submit'>Найти</button>
         </form>
-        <FilterCheckbox/>
+        <FilterCheckbox onChange={props.onCheckbox} checked={props.checked}/>
       </div>
     </section>
   );

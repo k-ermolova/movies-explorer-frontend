@@ -23,17 +23,25 @@ const setVisibleCards = () => {
 
 function Movies(props) {
   const [visible, setVisible] = useState(initialNum);
+  const [isChecked, setIsChecked] = useState(true);
 
   const showMoreCards = () => {
     setVisible(previous => previous + showNum);
+  };
+  const featureFilms = props.cards.filter(card => card.duration > 40);
+  const shortFilms = props.cards.filter(card => card.duration <= 40);
+  const cards = [...featureFilms, ...shortFilms];
+
+  const handleCheck = () => {
+    setIsChecked(!isChecked);
   }
 
   useMemo(() => setVisibleCards(), []);
 
   return(
   <main className='movies'>
-    <SearchForm onChange={props.onChange} onSubmit={props.onSubmit} validation={props.validation}/>
-    <MoviesCardList cards={props.cards} onShowMore={showMoreCards} visible={visible}/>
+    <SearchForm onChange={props.onChange} onSubmit={props.onSubmit} validation={props.validation} onCheckbox={handleCheck} checked={isChecked}/>
+    <MoviesCardList cards={isChecked ? cards : featureFilms} onShowMore={showMoreCards} visible={visible}/>
   </main>
   );
 }
