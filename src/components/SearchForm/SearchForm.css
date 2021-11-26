@@ -7,7 +7,6 @@
   padding-bottom: 83px;
   display: grid;
   grid-template-columns: 81% 19%;
-  gap: 40px;
 }
 
 .search__form {
@@ -16,8 +15,8 @@
 }
 
 .search__input {
-  padding: 15px 0 15px 22px;
-  width: calc(100% - 22px);
+  padding: 15px 68px 15px 22px;
+  width: 100%;
   border: 1.5px solid rgba(62.7, 62.7, 62.7, 0.2);
   border-radius: 50px;
   font-size: 14px;
@@ -44,7 +43,7 @@
 .search__button {
   position: absolute;
   top: 7px;
-  right: 30px;
+  right: 7px;
   border: 0;
   padding: 0;
   background-color: #3456f3;

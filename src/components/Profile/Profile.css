@@ -41,12 +41,12 @@
 }
 
 .profile__input:last-of-type {
-  /*margin-bottom: 220px;*/
   border-bottom: none;
+  margin-bottom: 0;
 }
 
 .profile__edit-button {
-  margin: 0 0 16px 0;
+  margin: 220px 0 16px 0;
   padding: 0;
   max-width: 410px;
   border: none;
@@ -75,11 +75,8 @@
     width: 260px;
   }
 
-  .profile__input:last-of-type {
-    margin-bottom: 379px;
-  }
-
   .profile__edit-button {
+    margin-top: 379px;
     font-size: 12px;
   }
 

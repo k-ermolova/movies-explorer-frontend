@@ -14,9 +14,10 @@
 
 .cards__message {
   margin: 0;
+  padding-bottom: 20px;
   font-size: 12px;
   text-align: center;
-  color: #ee3465;
+  color: #3456F3;
 }
 
 @media screen and (max-width: 768px) {

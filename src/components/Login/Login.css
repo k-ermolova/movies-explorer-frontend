@@ -114,14 +114,6 @@
 
   }
 
-  .input-text:last-child {
-    margin-bottom: 157px;
-  }
-
-  .input-text_type_login:last-child {
-    margin-bottom: 267px;
-  }
-
   .form__button {
     width: 260px;
     font-size: 12px;
