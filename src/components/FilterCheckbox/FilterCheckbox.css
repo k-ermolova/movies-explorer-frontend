@@ -1,6 +1,7 @@
 .filter {
   display: flex;
-  align-items: center;
+  padding-top: 17px;
+  justify-content: flex-end;
 }
 
 .filter__label {
@@ -42,4 +43,10 @@
 .filter__checkbox:checked:after {
   left: 16px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+@media screen and (max-width: 768px){
+  .filter {
+    padding-top: 0;
+  }
 }
