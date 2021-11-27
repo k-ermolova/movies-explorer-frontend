@@ -20,12 +20,12 @@ function Login(props) {
           <label className='form__label'>E-mail</label>
           <input className={`input-text ${errors.email ? 'input-text_error' : ''}`} type='email' name='email'
                  onChange={handleChange}
-                 value={values.email} required maxLength={80}/>
+                 value={values.email || ''} required maxLength={80}/>
           {errors.email ? <p className='error'>{errors.email}</p> : ''}
           <label className='form__label'>Пароль</label>
           <input className={`input-text ${errors.password ? 'input-text_error' : ''}`} type='password' name='password'
                  onChange={handleChange}
-                 value={values.password} required/>
+                 value={values.password || ''} required/>
           {errors.password ? <p className='error'>{errors.password}</p> : ''}
           {props.message ? <p className='error'>{props.message}</p> : ''}
         </fieldset>

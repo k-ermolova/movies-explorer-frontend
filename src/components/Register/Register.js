@@ -18,18 +18,18 @@ function Register(props) {
         <fieldset className='form__field'>
           <label className='form__label'>Имя</label>
           <input className={`input-text ${errors.name ? 'input-text_error' : ''}`} type='text' name='name'
-                 onChange={handleChange} value={values.name}
+                 onChange={handleChange} value={values.name || ''}
                  minLength={2} maxLength={30} required/>
           {errors.name ? <p className='error'>{errors.name}</p> : ''}
           <label className='form__label'>E-mail</label>
           <input className={`input-text ${errors.email ? 'input-text_error' : ''}`} type='email' name='email'
-                 onChange={handleChange} value={values.email}
+                 onChange={handleChange} value={values.email || ''}
                  required/>
           {errors.email ? <p className='error'>{errors.email}</p> : ''}
           <label className='form__label'>Пароль</label>
           <input className={`input-text ${errors.password ? 'input-text_error' : ''}`} type='password'
                  name='password' onChange={handleChange}
-                 value={values.password} required/>
+                 value={values.password || ''} required/>
           {errors.password ? <p className='error'>{errors.password}</p> : ''}
           {props.message ? <p className='error'>{props.message}</p> : ''}
         </fieldset>
