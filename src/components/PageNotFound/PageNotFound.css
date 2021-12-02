@@ -24,6 +24,7 @@
   color: #3456f3;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
