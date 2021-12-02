@@ -65,6 +65,15 @@ class MainApi {
     }).then(this._checkResponse);
   }
 
+  getSavedMovies() {
+    return fetch(`${this._url}movies`, {
+      headers: {
+        'content-type': 'application/json',
+        authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      }
+    }).then(this._checkResponse);
+  }
+
   addMovie(data) {
     return fetch(`${this._url}movies`, {
       method: 'POST',

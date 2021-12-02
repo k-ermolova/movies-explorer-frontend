@@ -1,7 +1,8 @@
-import {useMemo, useState} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import Preloader from '../Preloader/Preloader';
 
 import './Movies.css';
 
@@ -23,24 +24,30 @@ const setVisibleCards = () => {
 
 function Movies(props) {
   const [visible, setVisible] = useState(initialNum);
-  const [isChecked, setIsChecked] = useState(true);
+  const [movies, setMovies] = useState([]);
+  const {isChecked, handleCheckboxState, featureFilms} = props.filter({});
+
+  useEffect(() => {
+    if (localStorage.allMovies) {
+      setMovies(() => JSON.parse(localStorage.allMovies));
+    }
+  }, [])
 
   const showMoreCards = () => {
     setVisible(previous => previous + showNum);
   };
-  const featureFilms = props.cards.filter(card => card.duration > 40);
-
-  const handleCheck = () => {
-    setIsChecked(!isChecked);
-  }
 
   useMemo(() => setVisibleCards(), []);
 
-  return(
-  <main className='movies'>
-    <SearchForm onChange={props.onChange} onSubmit={props.onSubmit} validation={props.validation} onCheckbox={handleCheck} checked={isChecked}/>
-    <MoviesCardList cards={isChecked ? props.cards : featureFilms} onShowMore={showMoreCards} visible={visible}/>
-  </main>
+  return (
+    <main className='movies'>
+      <SearchForm cards={props.cards} setMovies={setMovies}
+                  onCheckbox={handleCheckboxState} checked={isChecked}/>
+      {props.loading ? <Preloader/> :
+        <MoviesCardList cards={isChecked ? movies : featureFilms(movies)} initialCards={props.cards} onShowMore={showMoreCards} visible={visible}
+                        onMovieAdding={props.onMovieAdding} onDeletion={props.onDeletion}
+                        savedCards={props.savedCards}/>}
+    </main>
   );
 }
 

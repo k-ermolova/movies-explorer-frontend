@@ -23,14 +23,12 @@ function App() {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
-  const [searchValue, setSearchValue] = useState('');
-  const [inputValue, setInputValue] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [savedCards, setSavedCards] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(Boolean(localStorage.getItem('jwt')));
+  const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
 
   const history = useHistory();
-
-  let moviesInput;
 
   const handleOpening = () => {
     setIsMenuOpened(true);
@@ -46,11 +44,11 @@ function App() {
       .authorize(email, password)
       .then(data => {
         if (data.token) {
-          setLoggedIn(true);
           localStorage.setItem('jwt', data.token);
-          history.push('/movies');
+          tokenCheck(data.token);
         }
-      }).catch(err => {
+      })
+      .catch(err => {
         if (err.status === 401) {
           handleErrorMessage('Введен неверный логин или пароль.');
         } else if (err.status === 400) {
@@ -65,13 +63,8 @@ function App() {
     const {name, email, password} = userData;
     return mainApi
       .register(name, email, password)
-      .then(data => {
-        if (data.token) {
-          setLoggedIn(true);
-          localStorage.setItem('jwt', data.token);
-          history.push('/movies');
-        }
-      }).catch(err => {
+      .then(() => handleLogin({email, password}))
+      .catch(err => {
         if (err.status === 409) {
           handleErrorMessage('Пользователь с указанным email уже существует.')
         } else if (err.status === 400) {
@@ -84,27 +77,54 @@ function App() {
 
   const handleLogOut = () => {
     setLoggedIn(false);
-    localStorage.removeItem('jwt');
+    setCurrentUser({});
+    localStorage.clear();
     history.push('/');
   }
 
-  const tokenCheck = () => {
-    if (localStorage.getItem('jwt')) {
-      const jwt = localStorage.getItem('jwt');
-      mainApi
-        .checkToken(jwt)
-        .then(() => {
-          setLoggedIn(true)
-        })
-        .catch(err => console.log(err));
-    }
+  const tokenCheck = (jwt) => {
+    mainApi
+      .checkToken(jwt)
+      .then((res) => {
+        if (res) {
+          setLoggedIn(true);
+          setCurrentUser(res);
+          history.push('/movies');
+        }
+      })
+      .catch(err => console.log(`Ошибка ${err.status}: ${err.statusText}`));
   }
 
   const handleUpdateUserInfo = (name, email) => {
+    setLoading(true);
     mainApi
       .updateUserInfo(name, email)
       .then((userData) => setCurrentUser(userData))
-      .catch(err => console.log(err));
+      .catch(err => {
+        if (err.status === 409) {
+          handleErrorMessage('Пользователь с указанным email уже существует.')
+        } else if (err.status === 400) {
+          handleErrorMessage('Проверьте формат введённых данных.');
+        } else {
+          handleErrorMessage('Что-то пошло не так...');
+        }
+      })
+      .finally(() => setLoading(false));
+  }
+
+  const handleMovieAdding = (movie) => {
+    movie.owner = currentUser._id;
+    mainApi.addMovie(movie)
+      .then(movieData => setSavedCards([movieData, ...savedCards]))
+      .catch(err => console.log(`Ошибка ${err.status}: ${err.statusText}`));
+  }
+
+  const handleMovieDeletion = (movie) => {
+    mainApi.deleteMovie(movie._id)
+      .then(() => {
+        setSavedCards(() => savedCards.filter((i) => i._id !== movie._id));
+      })
+      .catch(err => console.log(`Ошибка ${err.status}: ${err.statusText}`));
   }
 
   const handleErrorMessage = (err) => {
@@ -113,76 +133,49 @@ function App() {
   }
 
   useEffect(() => {
-    tokenCheck();
-  }, []);
-
-  useEffect(() => {
     if (loggedIn) {
-      history.push('/movies');
-    }
-  }, [history, loggedIn]);
-
-
-  useEffect(() => {
-    if (loggedIn) {
-      Promise.all([mainApi.getUserInfo(), moviesApi.getMovies()])
-        .then(([userData, movies]) => {
+      setLoading(true);
+      Promise.all([mainApi.getUserInfo(), moviesApi.getMovies(), mainApi.getSavedMovies()])
+        .then(([userData, movies, savedMovies]) => {
           setCurrentUser(userData);
           setCards(movies);
+          setSavedCards([...savedMovies.filter((movie) => movie.owner === userData._id)].reverse());
         })
-        .catch(err => console.log(err));
+        .catch(err => console.log(`Ошибка ${err.status}: ${err.statusText}`))
+        .finally(() => setLoading(false));
     }
   }, [loggedIn]);
-
-  const handleChange = (evt) => {
-    moviesInput = evt.target.value;
-  }
-
-  const handleInputChange = (evt) => {
-    setInputValue(evt.target.value);
-  }
-
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-    setSearchValue(moviesInput);
-  }
-
-  const checkContent = (title, input) => {
-    return title.toLowerCase().includes(input.toLowerCase());
-  }
-
-  const filteredCards = cards.filter((value) => {
-    if (checkContent(value.nameRU, searchValue)) {
-      return value;
-    }
-    return '';
-  });
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
       {useRouteMatch(['/movies', '/saved-movies', '/profile']) ? (
-        <Header desktopMenu={true} onMenu={handleOpening} isMenuOpened={isMenuOpened} onClose={handleClosing}/>) : ''}
+        <Header loggedIn={loggedIn} onMenu={handleOpening} isMenuOpened={isMenuOpened} onClose={handleClosing}/>) : ''}
       <Switch>
         <Route exact path='/'>
           <Header/>
           <Main/>
           <Footer/>
         </Route>
-        <Route path='/signup'>
-          <Register onRegister={handleRegister} onChange={handleInputChange} value={inputValue}
-                    validation={useFormWithValidation} message={errorMessage}/>
+        <Route exact path='/signup'>
+          <Register onRegister={handleRegister} validation={useFormWithValidation} message={errorMessage}/>
         </Route>
-        <Route path='/signin'>
-          <Login onLogin={handleLogin} onChange={handleInputChange} value={inputValue}
-                 validation={useFormWithValidation} message={errorMessage}/>
+        <Route exact path='/signin'>
+          <Login onLogin={handleLogin} validation={useFormWithValidation} message={errorMessage}/>
         </Route>
-        <ProtectedRoute path='/movies' component={Movies} cards={filteredCards} onChange={handleChange}
-                        onSubmit={handleSubmit} loggedIn={loggedIn}/>
-        <ProtectedRoute path='/saved-movies' component={SavedMovies} loggedIn={loggedIn}/>
+        <ProtectedRoute path='/movies' component={Movies}
+                        loggedIn={loggedIn} cards={cards}
+                        loading={loading} onMovieAdding={handleMovieAdding} savedCards={savedCards}
+                        filter={useCheckboxFilter}
+                        onDeletion={handleMovieDeletion}/>
+        <ProtectedRoute path='/saved-movies' component={SavedMovies} savedCards={savedCards}
+                        setSavedCards={setSavedCards}
+                        onDeletion={handleMovieDeletion} filter={useCheckboxFilter}
+                        loading={loading} loggedIn={loggedIn}/>
         <ProtectedRoute path='/profile' component={Profile} onLogOut={handleLogOut} loggedIn={loggedIn}
-                        user={currentUser} onSubmit={handleUpdateUserInfo}/>
+                        user={currentUser} onSubmit={handleUpdateUserInfo} validation={useFormWithValidation}
+                        message={errorMessage} loading={loading}/>
         <Route path='*'>
-          <PageNotFound history={history}/>
+          <PageNotFound/>
         </Route>
       </Switch>
       {useRouteMatch(['/movies', '/saved-movies']) ? (<Footer/>) : ''}

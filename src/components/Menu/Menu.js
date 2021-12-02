@@ -8,8 +8,8 @@ function Menu(props) {
     <div className={`menu ${props.isMenuOpened ? 'menu_opened' : ''}`}>
       <div className='menu__container'>
         <button className='menu__close-button' onClick={props.onClose}/>
-        <Navigation mobile={true}/>
-        <AccountLink mobile={true}/>
+        <Navigation mobile={true} onClick={props.onClose}/>
+        <AccountLink mobile={true} onClick={props.onClose}/>
       </div>
     </div>
   );
