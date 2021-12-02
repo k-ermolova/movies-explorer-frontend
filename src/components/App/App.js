@@ -13,6 +13,7 @@ import Profile from '../Profile/Profile';
 import moviesApi from '../../utils/MoviesApi';
 import mainApi from '../../utils/MainApi';
 import {useFormWithValidation} from '../../utils/Validation';
+import {useCheckboxFilter} from '../../utils/MoviesFilter';
 import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
