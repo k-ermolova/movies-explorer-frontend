@@ -1,6 +1,9 @@
+import {useHistory} from 'react-router-dom';
+
 import './PageNotFound.css';
 
-function PageNotFound({history}) {
+function PageNotFound() {
+  const history = useHistory();
   return (
     <div className='not-found'>
       <span className='not-found__error'>404</span>

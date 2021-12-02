@@ -8,10 +8,10 @@ import Menu from '../Menu/Menu';
 import './Header.css';
 
 function Header(props) {
-  return (props.desktopMenu ? (
+  return (props.loggedIn ? (
         <header className='header header_movies page__header'>
           <Logo/>
-          <Navigation desktopMenu={true}/>
+          <Navigation loggedIn={true}/>
           <AccountLink/>
           <button className='header__menu' onClick={props.onMenu}/>
           <Menu isMenuOpened={props.isMenuOpened} onClose={props.onClose}/>
