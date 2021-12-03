@@ -152,7 +152,7 @@ function App() {
         <Header loggedIn={loggedIn} onMenu={handleOpening} isMenuOpened={isMenuOpened} onClose={handleClosing}/>) : ''}
       <Switch>
         <Route exact path='/'>
-          <Header/>
+          <Header loggedIn={loggedIn} onMenu={handleOpening} isMenuOpened={isMenuOpened} onClose={handleClosing}/>
           <Main/>
           <Footer/>
         </Route>
