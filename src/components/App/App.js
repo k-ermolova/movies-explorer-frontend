@@ -27,6 +27,8 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(Boolean(localStorage.getItem('jwt')));
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState();
+  const [disabledInputs, setDisabledInputs] = useState(false);
 
   const history = useHistory();
 
@@ -40,6 +42,7 @@ function App() {
 
   const handleLogin = (userData) => {
     const {email, password} = userData;
+    setDisabledInputs(true);
     return mainApi
       .authorize(email, password)
       .then(data => {
@@ -56,11 +59,13 @@ function App() {
         } else {
           handleErrorMessage('Что-то пошло не так...');
         }
-      });
+      })
+      .finally(() => setDisabledInputs(false));
   }
 
   const handleRegister = (userData) => {
     const {name, email, password} = userData;
+    setDisabledInputs(true);
     return mainApi
       .register(name, email, password)
       .then(() => handleLogin({email, password}))
@@ -72,7 +77,8 @@ function App() {
         } else {
           handleErrorMessage('Что-то пошло не так...');
         }
-      });
+      })
+      .finally(() => setDisabledInputs(false));
   }
 
   const handleLogOut = () => {
@@ -96,10 +102,13 @@ function App() {
   }
 
   const handleUpdateUserInfo = (name, email) => {
-    setLoading(true);
+    setDisabledInputs(true);
     mainApi
       .updateUserInfo(name, email)
-      .then((userData) => setCurrentUser(userData))
+      .then((userData) => {
+        setCurrentUser(userData);
+        handleSuccessMessage('Информация успешно обновлена.');
+      })
       .catch(err => {
         if (err.status === 409) {
           handleErrorMessage('Пользователь с указанным email уже существует.')
@@ -109,7 +118,7 @@ function App() {
           handleErrorMessage('Что-то пошло не так...');
         }
       })
-      .finally(() => setLoading(false));
+      .finally(() => setDisabledInputs(false));
   }
 
   const handleMovieAdding = (movie) => {
@@ -130,6 +139,11 @@ function App() {
   const handleErrorMessage = (err) => {
     setErrorMessage(err);
     setTimeout(() => setErrorMessage(''), 4000);
+  }
+
+  const handleSuccessMessage = (success) => {
+    setSuccessMessage(success);
+    setTimeout(() => setSuccessMessage(''), 2000);
   }
 
   useEffect(() => {
@@ -157,10 +171,12 @@ function App() {
           <Footer/>
         </Route>
         <Route exact path='/signup'>
-          <Register onRegister={handleRegister} validation={useFormWithValidation} message={errorMessage}/>
+          <Register onRegister={handleRegister} validation={useFormWithValidation} error={errorMessage}
+                    disabledInputs={disabledInputs}/>
         </Route>
         <Route exact path='/signin'>
-          <Login onLogin={handleLogin} validation={useFormWithValidation} message={errorMessage}/>
+          <Login onLogin={handleLogin} validation={useFormWithValidation} error={errorMessage}
+                 disabledInputs={disabledInputs}/>
         </Route>
         <ProtectedRoute path='/movies' component={Movies}
                         loggedIn={loggedIn} cards={cards}
@@ -173,7 +189,8 @@ function App() {
                         loading={loading} loggedIn={loggedIn}/>
         <ProtectedRoute path='/profile' component={Profile} onLogOut={handleLogOut} loggedIn={loggedIn}
                         user={currentUser} onSubmit={handleUpdateUserInfo} validation={useFormWithValidation}
-                        message={errorMessage} loading={loading}/>
+                        error={errorMessage} success={successMessage} loading={loading}
+                        disabledInputs={disabledInputs}/>
         <Route path='*'>
           <PageNotFound/>
         </Route>

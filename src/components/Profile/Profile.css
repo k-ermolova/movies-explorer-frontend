@@ -40,19 +40,35 @@
   z-index: 0;
 }
 
+.profile__success-info {
+  margin: 187px 0 0 0;
+  font-size: 11px;
+  min-height: 13px;
+  visibility: hidden;
+  text-align: center;
+}
+
+.profile__success-info_visible {
+  visibility: visible;
+}
+
 .profile__input:last-of-type {
   border-bottom: none;
   margin-bottom: 0;
 }
 
 .profile__edit-button {
-  margin: 220px 0 16px 0;
+  margin: 20px 0 16px 0;
   padding: 0;
   max-width: 410px;
   border: none;
   background: transparent;
   font-size: 13px;
   cursor: pointer;
+}
+
+.profile__edit-button:disabled {
+  cursor: default;
 }
 
 .profile__exit-button {
@@ -75,8 +91,11 @@
     width: 260px;
   }
 
+  .profile__success-info {
+    margin-top: 325px;
+  }
+
   .profile__edit-button {
-    margin-top: 379px;
     font-size: 12px;
   }
 

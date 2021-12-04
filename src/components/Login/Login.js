@@ -19,17 +19,17 @@ function Login(props) {
         <fieldset className='form__field'>
           <label className='form__label'>E-mail</label>
           <input className={`input-text ${errors.email ? 'input-text_error' : ''}`} type='email' name='email'
-                 onChange={handleChange}
+                 onChange={handleChange} disabled={props.disabledInputs}
                  value={values.email || ''} required maxLength={80}/>
           {errors.email ? <p className='error'>{errors.email}</p> : ''}
           <label className='form__label'>Пароль</label>
           <input className={`input-text ${errors.password ? 'input-text_error' : ''}`} type='password' name='password'
-                 onChange={handleChange}
+                 onChange={handleChange} disabled={props.disabledInputs}
                  value={values.password || ''} required/>
           {errors.password ? <p className='error'>{errors.password}</p> : ''}
-          {props.message ? <p className='error'>{props.message}</p> : ''}
+          {props.error ? <p className='error'>{props.error}</p> : ''}
         </fieldset>
-        <button className='form__button' type='submit' disabled={!isValid}>Войти</button>
+        <button className='form__button' type='submit' disabled={!isValid && props.disabledInputs}>Войти</button>
         <p className='form__question'>Ещё не зарегистрированы?&nbsp;
           <Link to='/signup' className='form__link'>Регистрация</Link>
         </p>
