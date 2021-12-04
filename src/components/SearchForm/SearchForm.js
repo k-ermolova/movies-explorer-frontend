@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {SEARCH_KEYWORD_INFO} from '../../utils/constants';
 
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
@@ -18,7 +19,7 @@ function SearchForm(props) {
         saved: evt.target.value,
       });
       if (value.saved === '') {
-        setError('Нужно ввести ключевое слово.');
+        setError(SEARCH_KEYWORD_INFO);
       }
     } else {
       setValue({
@@ -26,7 +27,7 @@ function SearchForm(props) {
         all: evt.target.value,
       });
       if (value.all === '') {
-        setError('Нужно ввести ключевое слово.');
+        setError(SEARCH_KEYWORD_INFO);
       }
     }
   }

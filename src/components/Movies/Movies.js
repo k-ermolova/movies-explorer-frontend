@@ -1,4 +1,5 @@
 import {useEffect, useMemo, useState} from 'react';
+import {DESKTOP_WIDTH, TABLET_WIDTH, CARDS_CONFIG} from '../../utils/constants';
 
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
@@ -10,15 +11,15 @@ let initialNum;
 let showNum;
 
 const setVisibleCards = () => {
-  if (window.innerWidth >= 1280) {
-    initialNum = 12;
-    showNum = 3;
-  } else if (window.innerWidth >= 768) {
-    initialNum = 8;
-    showNum = 2;
+  if (window.innerWidth >= DESKTOP_WIDTH) {
+    initialNum = CARDS_CONFIG.desktop.initial;
+    showNum = CARDS_CONFIG.desktop.more;
+  } else if (window.innerWidth >= TABLET_WIDTH) {
+    initialNum = CARDS_CONFIG.tablet.initial;
+    showNum = CARDS_CONFIG.tablet.more;
   } else {
-    initialNum = 5;
-    showNum = 2;
+    initialNum = CARDS_CONFIG.mobile.initial;
+    showNum = CARDS_CONFIG.mobile.more;
   }
 }
 

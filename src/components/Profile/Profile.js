@@ -8,7 +8,8 @@ function Profile(props) {
 
   const isLoaded = values !== undefined;
 
-  let isCorrect = isValid && (props.user.name !== values.name || props.user.email !== values.email) && (isLoaded ? (values.name.length !== 0 && values.email.length !== 0) : true);
+  let isCorrect = isValid && (props.user.name !== values.name || props.user.email !== values.email)
+    && (isLoaded ? (values.name.length !== 0 && values.email.length !== 0) : true);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -40,7 +41,8 @@ function Profile(props) {
                onChange={handleChange} disabled={props.disabledInputs}/>
         {errors.email ? <p className='error'>{errors.email}</p> : ''}
         {props.error ? <p className='error'>{props.error}</p> : ''}
-        <p className={`profile__success-info ${props.success ? 'profile__success-info_visible' : ''}`}>{props.success}</p>
+        <p
+          className={`profile__success-info ${props.success ? 'profile__success-info_visible' : ''}`}>{props.success}</p>
         <button className='profile__edit-button' type='submit'
                 disabled={isDisabled || props.disabledInputs}>Редактировать
         </button>

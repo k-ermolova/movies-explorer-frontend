@@ -1,6 +1,7 @@
 import {Route, Switch, useHistory, useRouteMatch} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 
+import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
@@ -10,12 +11,18 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import moviesApi from '../../utils/MoviesApi';
 import mainApi from '../../utils/MainApi';
 import {useFormWithValidation} from '../../utils/Validation';
 import {useCheckboxFilter} from '../../utils/MoviesFilter';
-import {CurrentUserContext} from '../../contexts/CurrentUserContext';
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import {
+  DUPLICATE_EMAIL_INFO,
+  GENERAL_ERROR_INFO,
+  INCORRECT_DATA_INFO,
+  SUCCESS_INFO,
+  WRONG_DATA_INFO
+} from '../../utils/constants';
 
 import './App.css';
 
@@ -53,11 +60,11 @@ function App() {
       })
       .catch(err => {
         if (err.status === 401) {
-          handleErrorMessage('Введен неверный логин или пароль.');
+          handleErrorMessage(WRONG_DATA_INFO);
         } else if (err.status === 400) {
-          handleErrorMessage('Проверьте формат введённых данных.');
+          handleErrorMessage(INCORRECT_DATA_INFO);
         } else {
-          handleErrorMessage('Что-то пошло не так...');
+          handleErrorMessage(GENERAL_ERROR_INFO);
         }
       })
       .finally(() => setDisabledInputs(false));
@@ -71,11 +78,11 @@ function App() {
       .then(() => handleLogin({email, password}))
       .catch(err => {
         if (err.status === 409) {
-          handleErrorMessage('Пользователь с указанным email уже существует.')
+          handleErrorMessage(DUPLICATE_EMAIL_INFO);
         } else if (err.status === 400) {
-          handleErrorMessage('Проверьте формат введённых данных.');
+          handleErrorMessage(INCORRECT_DATA_INFO);
         } else {
-          handleErrorMessage('Что-то пошло не так...');
+          handleErrorMessage(GENERAL_ERROR_INFO);
         }
       })
       .finally(() => setDisabledInputs(false));
@@ -107,15 +114,15 @@ function App() {
       .updateUserInfo(name, email)
       .then((userData) => {
         setCurrentUser(userData);
-        handleSuccessMessage('Информация успешно обновлена.');
+        handleSuccessMessage(SUCCESS_INFO);
       })
       .catch(err => {
         if (err.status === 409) {
-          handleErrorMessage('Пользователь с указанным email уже существует.')
+          handleErrorMessage(DUPLICATE_EMAIL_INFO);
         } else if (err.status === 400) {
-          handleErrorMessage('Проверьте формат введённых данных.');
+          handleErrorMessage(INCORRECT_DATA_INFO);
         } else {
-          handleErrorMessage('Что-то пошло не так...');
+          handleErrorMessage(GENERAL_ERROR_INFO);
         }
       })
       .finally(() => setDisabledInputs(false));
