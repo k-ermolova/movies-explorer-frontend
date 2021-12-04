@@ -25,7 +25,7 @@ const setVisibleCards = () => {
 function Movies(props) {
   const [visible, setVisible] = useState(initialNum);
   const [movies, setMovies] = useState([]);
-  const {isChecked, handleCheckboxState, featureFilms} = props.filter({});
+  const {checkboxState, handleCheckboxState, featureFilms} = props.filter({});
 
   useEffect(() => {
     if (localStorage.allMovies) {
@@ -42,9 +42,9 @@ function Movies(props) {
   return (
     <main className='movies'>
       <SearchForm cards={props.cards} setMovies={setMovies}
-                  onCheckbox={handleCheckboxState} checked={isChecked}/>
+                  onCheckbox={() => handleCheckboxState(false)} checked={checkboxState.all}/>
       {props.loading ? <Preloader/> :
-        <MoviesCardList cards={isChecked ? movies : featureFilms(movies)} initialCards={props.cards} onShowMore={showMoreCards} visible={visible}
+        <MoviesCardList cards={checkboxState.all ? movies : featureFilms(movies)} initialCards={props.cards} onShowMore={showMoreCards} visible={visible}
                         onMovieAdding={props.onMovieAdding} onDeletion={props.onDeletion}
                         savedCards={props.savedCards}/>}
     </main>
