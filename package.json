@@ -19,7 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+    "deploy": "npm run build && scp -r ./build/* diploma@178.154.223.149:/home/diploma/movies-explorer-frontend"
   },
   "eslintConfig": {
     "extends": [
