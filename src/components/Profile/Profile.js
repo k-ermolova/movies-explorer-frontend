@@ -42,7 +42,7 @@ function Profile(props) {
         {errors.email ? <p className='error'>{errors.email}</p> : ''}
         {props.error ? <p className='error'>{props.error}</p> : ''}
         <p
-          className={`profile__success-info ${props.success ? 'profile__success-info_visible' : ''}`}>{props.success}</p>
+          className={`profile__success-info profile__success-info_visible ${props.success ? 'profile__success-info_visible' : ''}`}>{props.success}</p>
         <button className='profile__edit-button' type='submit'
                 disabled={isDisabled || props.disabledInputs}>Редактировать
         </button>

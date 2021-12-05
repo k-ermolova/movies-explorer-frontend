@@ -177,14 +177,14 @@ function App() {
           <Main/>
           <Footer/>
         </Route>
-        <Route exact path='/signup'>
+        {!loggedIn && <Route exact path='/signup'>
           <Register onRegister={handleRegister} validation={useFormWithValidation} error={errorMessage}
                     disabledInputs={disabledInputs}/>
-        </Route>
-        <Route exact path='/signin'>
+        </Route>}
+        {!loggedIn && <Route exact path='/signin'>
           <Login onLogin={handleLogin} validation={useFormWithValidation} error={errorMessage}
                  disabledInputs={disabledInputs}/>
-        </Route>
+        </Route>}
         <ProtectedRoute path='/movies' component={Movies}
                         loggedIn={loggedIn} cards={cards}
                         loading={loading} onMovieAdding={handleMovieAdding} savedCards={savedCards}
