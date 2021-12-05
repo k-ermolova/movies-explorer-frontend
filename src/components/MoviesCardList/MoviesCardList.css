@@ -12,6 +12,14 @@
   gap: 28px;
 }
 
+.cards__message {
+  margin: 0;
+  padding-bottom: 160px;
+  font-size: 12px;
+  text-align: center;
+  color: #3456F3;
+}
+
 @media screen and (max-width: 768px) {
   .movies__cards {
     padding: 70px 30px 30px;

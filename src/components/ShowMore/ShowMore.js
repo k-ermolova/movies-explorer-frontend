@@ -1,9 +1,9 @@
 import './ShowMore.css';
 
-function ShowMore() {
+function ShowMore(props) {
   return(
     <div className='more cards__more'>
-      <button className='more__button' type='button'>Ещё</button>
+      <button className='more__button' type='button' onClick={props.onShowMore}>Ещё</button>
     </div>
   );
 }
